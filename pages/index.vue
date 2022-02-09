@@ -7,6 +7,7 @@
           <div class="posts-container-parent hide-scrollbar">
             <FeaturedTags />
             <Post />
+
           </div>
         </div>
         <Ads />
@@ -17,11 +18,13 @@
 
 <script>
 export default {
+
   data() {
     return {
-      posts: [],
+      posts: {},
     }
   },
+ 
   async fetch() {
     this.posts = await fetch('http://localhost:8000/api/posts').then((res) =>
       res.json()
