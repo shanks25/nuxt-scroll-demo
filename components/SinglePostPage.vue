@@ -12,7 +12,7 @@
             </picture>
           </a>
           <p class="post-cat">
-            <a class="section" target="_blank" href="#.">Funny</a> .
+            <a class="section" target="_blank" href="#.">{{post.categories.name}}</a> .
             <span class="post-time">1h</span>
           </p>
           <div class="dropdown dot-dropdown">
@@ -66,10 +66,7 @@
       </div>
       <div class="post-tag">
         <ul class="tag-list">
-          <li><a href="#." class="c-tag">Breakfast</a></li>
-          <li><a href="#." class="c-tag">In</a></li>
-          <li><a href="#." class="c-tag">Movies</a></li>
-          <li><a href="#." class="c-tag">Comics</a></li>
+          <Tag v-for="tag in post.tags" :key="tag.id" :tag="tag"></Tag>
         </ul>
       </div>
      

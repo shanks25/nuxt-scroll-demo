@@ -2,8 +2,8 @@
 <template>
   <div>
     <!-- {{posts}} -->
-    <pagination :data="posts" @pagination-change-page="getResults"></pagination>
-  
+    <pagination :data="posts" @pagination-change-page="getResults" :limit="6"></pagination>
+
     <article v-for="post in posts.data" :key="post.id">
       <header>
         <div class="post-section">
@@ -16,8 +16,9 @@
             </picture>
           </a>
           <p class="post-cat">
-            <a class="section" target="_blank" href="#.">Animals</a> .
-            <span class="post-time">3h</span>
+            <a class="section" target="_blank" href="#.">{{
+              post.categories.name
+            }}</a>
           </p>
           <div class="save-post">
             <a href="#."><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
@@ -52,7 +53,6 @@
         </div>
       </div>
     </article>
-
   </div>
 </template>
 
