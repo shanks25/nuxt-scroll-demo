@@ -1,6 +1,8 @@
 <template>
   <div>
-    <FeaturedTags />
+    <Loader v-if="$fetchState.pending" />
+    <h3 v-else>{{posts.keta}}</h3>
+    <br />
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
@@ -24,28 +26,42 @@ export default {
       posts: {},
     }
   },
-
+  head() {
+    return {
+      title: this.posts.keta,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.posts.keta,
+        },
+      ],
+    }
+  },
   methods: {
     getResults(page = 1) {
       if (this.$route.query.page != page) {
-        this.$router
-          .replace({
-            query: {
-              page: page,
-            },
-          })
-         
-      } 
+        this.$router.replace({
+          query: {
+            page: page,
+          },
+        })
+      }
       axios
-        .get('http://localhost:8000/api/posts?page=' + page)
+        .get(
+          `http://localhost:8000/api/tag/${this.$route.params.tag}?page=${page}`
+        )
         .then((response) => {
           this.posts = response.data
         })
     },
-  }, 
+  },
+  // watch: {
+  //   '$router.query': '$fetch',
+  // },
   async fetch() {
     this.posts = await this.$axios.$get(
-      `http://localhost:8000/api/posts?page=${this.$route.query.page}`
+      `http://localhost:8000/api/tag/${this.$route.params.tag}?page=${this.$route.query.page}`
     )
   },
 }

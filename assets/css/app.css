@@ -260,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 17px;
     box-sizing: content-box;
 }
-.advertise{
+.right-box-m{
     margin-bottom: 20px;
 }
 
@@ -470,7 +470,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
     } 
 }
 @media (max-width: 576px){
-    .ads-container-parent, .posts-container-parent {
+    .right-box-parent, .posts-container-parent {
         height: 100%;
     } 
 }

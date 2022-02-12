@@ -1,24 +1,21 @@
-<!-- Please remove this file from your project -->
 <template>
   <div>
-    <!-- {{posts}} -->
-    <pagination :data="posts" @pagination-change-page="getResults" :limit="6"></pagination>
+  
 
-    <article v-for="post in posts.data" :key="post.id">
+    <article >
       <header>
         <div class="post-section">
           <a class="thumb-icon" target="_blank" href="#.">
             <picture>
               <img
                 src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557391851.3248_Za4UdA_100x100.jpg"
-                loading="lazy"
+                :alt="post.categories.name"
               />
             </picture>
           </a>
           <p class="post-cat">
-            <a class="section" target="_blank" href="#.">{{
-              post.categories.name
-            }}</a>
+              <NuxtLink  class="section" :to="{ name: 'sections-category', params: { category:post.categories.slug } }" >
+            {{post.categories.name }}</NuxtLink>
           </p>
           <div class="save-post">
             <a href="#."><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
@@ -26,7 +23,6 @@
           <h1 class="post-title">
             <NuxtLink
               :to="{ name: 'posts-slug', params: { slug: post.slug } }"
-              target="_blank"
               >{{ post.title }}</NuxtLink
             >
           </h1>
@@ -40,6 +36,11 @@
             </picture>
           </div>
         </a>
+      </div>
+       <div class="post-tag" style="margin-left:400px">
+        <ul class="tag-list">
+          <Tag v-for="tag in post.tags" :key="tag.id" :tag="tag"></Tag>
+        </ul>
       </div>
       <div class="post-meta">
         <div class="post-actions">
@@ -57,29 +58,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  data() {
-    return {
-      posts: {},
-    }
-  },
-
-  methods: {
-    // Our method to GET results from a Laravel endpoint
-    getResults(page = 1) {
-      axios
-        .get('http://localhost:8000/api/posts?page=' + page)
-        .then((response) => {
-          this.posts = response.data
-        })
-    },
-  },
-  async fetch() {
-    this.posts = await fetch('http://localhost:8000/api/posts').then((res) =>
-      res.json()
-    )
+  props: {
+    post: Object,
   },
 }
 </script>

@@ -1,9 +1,13 @@
 <template>
-<li><a href="#." class="c-tag">{{tag.name}}</a></li>
+<li>
+     <NuxtLink class="c-tag" :to="{ name: 'tags-tag', params: { tag: tag.slug } }" >
+         {{tag.name}} 
+    </NuxtLink>
+    </li>
 </template>
 
 <script>
-export default{
-    props: ['tag'],
+export default {
+  props: ['tag'],
 }
 </script>
