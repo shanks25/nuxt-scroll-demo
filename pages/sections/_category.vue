@@ -89,8 +89,9 @@ export default {
   //   '$router.query': '$fetch',
   // },
   async fetch() {
+    let page = this.$route.query.page ? this.$route.query.page : 1 
     this.posts = await this.$axios.$get(
-      `category/${this.$route.params.category}?page=${this.$route.query.page}`
+      `category/${this.$route.params.category}?page=${page}`
     )
   },
 }

@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-sm-9">
             <div class="posts-container-parent hide-scrollbar">
-              <Nuxt />
+              <nuxt keep-alive />
             </div>
           </div>
           <LayoutAds />
@@ -26,14 +26,14 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {  hid: 'description',  name: 'description',   content: 'DD Memes The Meme Libray'  },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'DD Memes The Meme Libray',
+      },
       { hid: 'keywords', name: 'keywords', content: 'itachi bitch' },
-      {'http-equiv':'http-equiv', content:'text/html; charset=UTF-8'}
-
-
-
+      { 'http-equiv': 'http-equiv', content: 'text/html; charset=UTF-8' },
     ],
-    
   },
 }
 </script>

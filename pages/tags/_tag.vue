@@ -12,7 +12,7 @@
     ></pagination>
 
     <Posts v-for="post in posts.data" :key="post.id" :post="post" />
-    
+
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -52,18 +51,17 @@ export default {
         })
       }
       this.$axios
-        .$get(
-          `tag/${this.$route.params.tag}?page=${page}`
-        )
+        .$get(`tag/${this.$route.params.tag}?page=${page}`)
         .then((response) => {
           this.posts = response
         })
     },
   },
- 
+
   async fetch() {
+    let page = this.$route.query.page ? this.$route.query.page : 1
     this.posts = await this.$axios.$get(
-      `tag/${this.$route.params.tag}?page=${this.$route.query.page}`
+      `tag/${this.$route.params.tag}?page=${page}`
     )
   },
 }

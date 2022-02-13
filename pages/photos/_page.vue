@@ -32,6 +32,7 @@ export default {
     },
   }, 
   async fetch() {
+
     this.posts = await this.$axios.$get(
       `posts?page=${this.$route.params.page}`
     )

@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Back /> 
+    <Back />
+    <SocialHead
+      :title="post.data.title"
+      :description="post.data.ocr"
+      :image="post.data.image"
+    />
     <Posts :post="post.data" />
   </div>
 </template>

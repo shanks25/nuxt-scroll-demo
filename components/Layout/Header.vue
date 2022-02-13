@@ -2,7 +2,7 @@
  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
       <div class="container">
         <button class="toggle-drawer-btn" onclick="toggleDrawer()">☰</button>
-        <nuxt-link :to="{name:'index'}" class="navbar-brand" href="#">CMemes</nuxt-link>
+        <nuxt-link :to="{name:'index'}" class="navbar-brand" >CMemes</nuxt-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <nuxt-link :to="{name:'index'}" class="nav-link active" aria-current="page" href="#">Home </nuxt-link>
+              <nuxt-link :to="{name:'index'}" class="nav-link active" aria-current="page" >Home </nuxt-link>
             </li>
           </ul>
           <form class="d-flex">

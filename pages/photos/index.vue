@@ -1,35 +1,9 @@
 <template>
   <div>
-    <FeaturedTags />
-
-    <header>
-      <div class="post-section">
-        <a class="thumb-icon" target="_blank" href="#.">
-          <picture>
-            <img
-              src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557391851.3248_Za4UdA_100x100.jpg"
-            />
-          </picture>
-        </a>
-
-        <div class="save-post">
-          <a href="#."><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
-        </div>
-        <h1 class="post-title">
-       
-        </h1>
-      </div>
-    </header>
-    <div class="article-content">
-      <a href="#" class="" target="">
-        <div class="image-post post-view"></div>
-      </a>
-    </div>
-
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
-           <pagination
+          <pagination
             :data="posts"
             @pagination-change-page="getResults"
           ></pagination>
@@ -41,7 +15,6 @@
 
 
 <script>
-import axios from 'axios'
 
 export default {
   data() {
@@ -56,10 +29,13 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content:'All pages',
+          content: 'All pages',
         },
-        { hid: 'keywords', name: 'keywords', content: 'itachi category wise posts' },
-
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'itachi category wise posts',
+        },
       ],
     }
   },
