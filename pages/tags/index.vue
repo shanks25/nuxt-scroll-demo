@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Back />
     <Tag v-for="tag in tags.data" :key="tag.id" :tag="tag" />
   </div>
 </template>
@@ -14,10 +15,23 @@ export default {
     }
   },
 
+  head() {
+    return {
+      title: this.tags.keta,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.tags.keta,
+        },
+        { hid: 'keywords', name: 'keywords', content: 'itachi all tags' },
+
+      ],
+    }
+  },
+
   async fetch() {
-    this.tags = await this.$axios.$get(
-      `http://localhost:8000/api/tags`
-    )
+    this.tags = await this.$axios.$get(`tags`)
   },
 }
 </script>

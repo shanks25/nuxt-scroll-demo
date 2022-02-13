@@ -14,14 +14,14 @@
           />
         </picture>
       </div>
-    <Loader v-if="$fetchState.pending" />
+      <Back />
+
+      <Loader v-if="$fetchState.pending" />
 
       <div class="profile-right" v-else>
-        <h2>{{posts.keta}}</h2>
+        <h2>{{ posts.category_name }}</h2>
         <p>
-          Explore funny memes, GIFs and videos on 9GAG. See top memes and
-          hilarious videos about funny animals, human fails, comedians, stand-up
-          comedy and more.
+          {{ posts.category_description }}
         </p>
       </div>
     </div>
@@ -41,12 +41,29 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   data() {
     return {
       posts: {},
+    }
+  },
+
+  head() {
+    return {
+      title: this.posts.keta,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.posts.keta,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'itachi category wise posts',
+        },
+      ],
     }
   },
 
@@ -60,10 +77,11 @@ export default {
         })
       }
 
-      axios
-        .get(`http://localhost:8000/api/category/${this.$route.params.category}?page=${page}`)
+      this.$axios.$get(
+          `category/${this.$route.params.category}?page=${page}`
+        )
         .then((response) => {
-          this.posts = response.data
+          this.posts = response
         })
     },
   },
@@ -72,7 +90,7 @@ export default {
   // },
   async fetch() {
     this.posts = await this.$axios.$get(
-      `http://localhost:8000/api/category/${this.$route.params.category}?page=${this.$route.query.page}`
+      `category/${this.$route.params.category}?page=${this.$route.query.page}`
     )
   },
 }

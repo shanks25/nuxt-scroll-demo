@@ -1,14 +1,18 @@
 <template>
   <div>
+    <Back />
     <Loader v-if="$fetchState.pending" />
-    <h3 v-else>{{posts.keta}}</h3>
+    <h3 v-else>{{ posts.keta }}</h3>
+
     <br />
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
+
     <Posts v-for="post in posts.data" :key="post.id" :post="post" />
+    
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
@@ -18,7 +22,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   data() {
@@ -35,6 +38,7 @@ export default {
           name: 'description',
           content: this.posts.keta,
         },
+        { hid: 'keywords', name: 'keywords', content: 'itachi single tag' },
       ],
     }
   },
@@ -47,21 +51,19 @@ export default {
           },
         })
       }
-      axios
-        .get(
-          `http://localhost:8000/api/tag/${this.$route.params.tag}?page=${page}`
+      this.$axios
+        .$get(
+          `tag/${this.$route.params.tag}?page=${page}`
         )
         .then((response) => {
-          this.posts = response.data
+          this.posts = response
         })
     },
   },
-  // watch: {
-  //   '$router.query': '$fetch',
-  // },
+ 
   async fetch() {
     this.posts = await this.$axios.$get(
-      `http://localhost:8000/api/tag/${this.$route.params.tag}?page=${this.$route.query.page}`
+      `tag/${this.$route.params.tag}?page=${this.$route.query.page}`
     )
   },
 }

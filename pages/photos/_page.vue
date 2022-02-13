@@ -6,9 +6,7 @@
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
-
     <Posts v-for="post in posts.data" :key="post.id" :post="post" />
-
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
@@ -28,22 +26,14 @@ export default {
 
   methods: {
     getResults(page = 1) {
-      if (this.$route.query.page != page) {
-        this.$router.replace({
-          query: {
-            page: page,
-          },
-        })
-      }
-      this.$axios.$get('posts?page=' + page)
-        .then((response) => {
-          this.posts = response
-        })
+     this.$router.push({name:'photos-page',params:{
+         page:page
+     }})
     },
-  },
+  }, 
   async fetch() {
     this.posts = await this.$axios.$get(
-      `posts?page=${this.$route.query.page}`
+      `posts?page=${this.$route.params.page}`
     )
   },
 }

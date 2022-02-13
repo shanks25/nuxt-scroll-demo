@@ -1,5 +1,8 @@
 <template>
-  <Posts :post="post.data" />
+  <div>
+    <Back /> 
+    <Posts :post="post.data" />
+  </div>
 </template>
 
 <script>
@@ -12,13 +15,16 @@ export default {
 
   head() {
     return {
-      title: this.post.data.ocr ? this.post.data.ocr : this.post.data.title ,
+      title: this.post.data.ocr ? this.post.data.ocr : this.post.data.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.post.data.ocr ? this.post.data.ocr : this.post.data.title ,
+          content: this.post.data.ocr
+            ? this.post.data.ocr
+            : this.post.data.title,
         },
+        { hid: 'keywords', name: 'keywords', content: 'itachi single post' },
       ],
     }
   },
