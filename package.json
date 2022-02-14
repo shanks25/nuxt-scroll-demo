@@ -17,7 +17,6 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.19.3",
     "laravel-vue-pagination": "^2.3.1",
-    "node-sass": "^7.0.1",
     "nuxt": "^2.15.8",
     "sass-loader": "^12.4.0",
     "vue": "^2.6.14",
