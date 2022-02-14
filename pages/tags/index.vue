@@ -1,7 +1,13 @@
 <template>
   <div>
-    <Back />
-    <Tag v-for="tag in tags.data" :key="tag.id" :tag="tag" />
+    <div class="post-meta">
+      <div class="post-actions">
+        <div class="act-left">
+          <Back />
+          <Tag v-for="tag in tags.data" :key="tag.id" :tag="tag" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,7 +31,6 @@ export default {
           content: this.tags.keta,
         },
         { hid: 'keywords', name: 'keywords', content: 'itachi all tags' },
-
       ],
     }
   },

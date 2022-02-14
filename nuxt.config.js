@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -10,23 +12,29 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet',  href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css' },
-      { rel: 'stylesheet',  href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' },
-    ], 
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css',
+      },
+    ],
 
     script: [
       {
-        src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js",
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js',
         body: true,
       },
       {
-        src: "https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js",
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
         body: true,
       },
-        {
-           src: '/main.js'
-        }
-    ]
+      {
+        src: '/main.js',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -50,12 +58,11 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/sitemap',
   ],
 
-  plugins: [
-    '@/plugins/vueLaravelPagination'
-  ],
-  
+  plugins: ['@/plugins/vueLaravelPagination'],
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
@@ -71,10 +78,26 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    loaders:  {
+    loaders: {
       vue: {
-         prettify: false
-      }
-    }
+        prettify: false,
+      },
+    },
+  },
+
+  sitemap: {
+    routes: async () => {
+      let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')
+      let pages = data.data.map((v) => `/photos/${v.id}`)
+
+      let tagData = await axios.get('http://localhost:8000/api/sitemap-tags')
+      let tags = tagData.data.data.map((v) => `/tags/${v.slug}`)
+
+      let categoryData = await axios.get(
+        'http://localhost:8000/api/sitemap-categories'
+      )
+      let categorys = categoryData.data.data.map((v) => `/sections/${v.slug}`)
+      return pages.concat(categorys, tags)
+    },
   },
 }
