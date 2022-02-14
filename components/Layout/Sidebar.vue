@@ -27,9 +27,9 @@
           </li>
           <li>
             <span class="dLeft">
-               <nuxt-link :to="{ name: 'photos' }"
+              <nuxt-link :to="{ name: 'photos' }"
                 ><i class="bi bi-lightning-charge-fill"></i> Photos</nuxt-link
-            >
+              >
             </span>
             <span class="dright"
               ><a href="#."><i class="bi bi-three-dots"></i></a
@@ -71,7 +71,14 @@ export default {
     }
   },
   async fetch() {
-    this.categories = await this.$axios.$get('http://localhost:8000/api/categories')
+    this.categories = await this.$axios.$get(
+      'http://localhost:3000/categories.json'
+    )
   },
+  // async fetch() {
+  //   this.categories = await this.$axios.$get(
+  //     'http://localhost:8000/api/categories'
+  //   )
+  // },
 }
 </script>

@@ -51,6 +51,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
+    // 'bootstrap-vue/nuxt',
   ],
 
   plugins: ['@/plugins/vueLaravelPagination'],

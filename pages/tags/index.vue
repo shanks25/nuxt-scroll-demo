@@ -35,6 +35,10 @@ export default {
     }
   },
 
+  /*   async fetch() {
+    this.tags = await this.$axios.$get('http://localhost:3000/tags.json')
+  }, */
+
   async fetch() {
     this.tags = await this.$axios.$get(`tags`)
   },
