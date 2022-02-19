@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -26,16 +25,16 @@ export default {
 
   methods: {
     getResults(page = 1) {
-     this.$router.push({name:'photos-page',params:{
-         page:page
-     }})
+      this.$router.push({
+        name: 'photos-page',
+        params: {
+          page: page,
+        },
+      })
     },
-  }, 
+  },
   async fetch() {
-
-    this.posts = await this.$axios.$get(
-      `posts?page=${this.$route.params.page}`
-    )
+    this.posts = await this.$axios.$get(`posts?page=${this.$route.params.page}`)
   },
 }
 </script>

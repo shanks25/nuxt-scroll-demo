@@ -11,6 +11,7 @@
           />
           <img
             src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100.jpg"
+            :alt="posts.category_name"
           />
         </picture>
       </div>
@@ -41,7 +42,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -77,9 +77,8 @@ export default {
         })
       }
 
-      this.$axios.$get(
-          `category/${this.$route.params.category}?page=${page}`
-        )
+      this.$axios
+        .$get(`category/${this.$route.params.category}?page=${page}`)
         .then((response) => {
           this.posts = response
         })
@@ -89,7 +88,7 @@ export default {
   //   '$router.query': '$fetch',
   // },
   async fetch() {
-    let page = this.$route.query.page ? this.$route.query.page : 1 
+    let page = this.$route.query.page ? this.$route.query.page : 1
     this.posts = await this.$axios.$get(
       `category/${this.$route.params.category}?page=${page}`
     )

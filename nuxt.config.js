@@ -1,4 +1,5 @@
 const axios = require('axios')
+require('dotenv').config()
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -31,26 +32,24 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    // '@/assets/css/bootstrap.min.css', // is works but my source code long css
     '@/assets/css/app.css',
     // '@/assets/css/font-awesome.min.css',
   ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: ['@nuxtjs/google-analytics'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
+    '@nuxtjs/dotenv',
     // 'bootstrap-vue/nuxt',
   ],
 
@@ -59,7 +58,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/api/',
+    baseURL: process.env.LOCAL_BASE_URL || 'http://localhost:8000/api',
+    progress: true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -78,7 +78,10 @@ export default {
     },
   },
 
-  sitemap: {
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
+  },
+  /*   sitemap: {
     routes: async () => {
       let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')
       let pages = data.data.map((v) => `/photos/${v.id}`)
@@ -92,5 +95,5 @@ export default {
       let categorys = categoryData.data.data.map((v) => `/sections/${v.slug}`)
       return pages.concat(categorys, tags)
     },
-  },
+  }, */
 }

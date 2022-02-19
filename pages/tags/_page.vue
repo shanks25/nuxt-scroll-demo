@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -36,27 +34,10 @@ export default {
       })
     },
   },
-
-  head() {
-    return {
-      title: this.tags.keta,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.tags.keta,
-        },
-        { hid: 'keywords', name: 'keywords', content: 'itachi all tags' },
-      ],
-    }
-  },
-
-  /*   async fetch() {
-    this.tags = await this.$axios.$get('http://localhost:3000/tags.json')
-  }, */
-
   async fetch() {
-    this.tags = await this.$axios.$get(`paginated-tags`)
+    this.tags = await this.$axios.$get(
+      `paginated-tags?page=${this.$route.params.page}`
+    )
   },
 }
 </script>

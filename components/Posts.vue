@@ -3,14 +3,20 @@
     <article>
       <header>
         <div class="post-section">
-          <a class="thumb-icon" target="_blank" href="#.">
+          <NuxtLink
+            class="thumb-icon"
+            :to="{
+              name: 'sections-category',
+              params: { category: post.categories.slug },
+            }"
+          >
             <picture>
               <img
                 src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557391851.3248_Za4UdA_100x100.jpg"
                 :alt="post.categories.name"
               />
             </picture>
-          </a>
+          </NuxtLink>
           <p class="post-cat">
             <NuxtLink
               class="section"

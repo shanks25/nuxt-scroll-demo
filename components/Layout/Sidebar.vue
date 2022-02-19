@@ -70,15 +70,15 @@ export default {
       categories: [],
     }
   },
-  async fetch() {
-    this.categories = await this.$axios.$get(
-      'http://localhost:3000/categories.json'
-    )
-  },
   // async fetch() {
   //   this.categories = await this.$axios.$get(
-  //     'http://localhost:8000/api/categories'
+  //     'http://localhost:3000/categories/categories.json'
   //   )
   // },
+  async fetch() {
+    this.categories = await this.$axios.$get(
+      'http://localhost:8000/api/categories'
+    )
+  },
 }
 </script>
