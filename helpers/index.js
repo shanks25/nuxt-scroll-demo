@@ -16,7 +16,7 @@ let categoryUrl = () => {
   if (laravelMode()) {
     return baseUrl() + `categories`
   }
-  return process.env.NUXT_BASE_URL + `json/tags/categories.json`
+  return process.env.NUXT_BASE_URL + `json/categories/categories.json`
 }
 
 function baseUrl() {
@@ -33,4 +33,4 @@ function laravelMode() {
   return 0 // this will call .json files nuxt local static folder
 }
 
-export { postUrl }
+export { postUrl, categoryUrl, tagUrl }

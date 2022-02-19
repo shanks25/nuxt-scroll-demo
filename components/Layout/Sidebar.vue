@@ -41,22 +41,11 @@
       <section class="dr-list">
         <h4>Section</h4>
         <ul>
-          <li v-for="category in categories.data" :key="category.id">
-            <NuxtLink
-              :to="{
-                name: 'sections-category',
-                params: { category: category.slug },
-              }"
-            >
-              <span class="dLeft">
-                <img
-                  src="https://i.picsum.photos/id/372/200/200.jpg?hmac=QFGGlcWGNWBK0oDD1jghIaCvGIFU5iJJcd2VhF5oH6o"
-                  :alt="category.name"
-                  class="thumb-icon"
-                />{{ category.name }}
-              </span>
-            </NuxtLink>
-          </li>
+          <Section
+            v-for="category in categories.data"
+            :key="category.id"
+            :category="category"
+          />
         </ul>
       </section>
     </div>
@@ -64,21 +53,25 @@
 </template>
 
 <script>
+import { categoryUrl } from '@/helpers'
+
 export default {
   data() {
     return {
       categories: [],
     }
   },
+  mounted() {
+    console.log(categoryUrl())
+  },
+
   // async fetch() {
   //   this.categories = await this.$axios.$get(
   //     'http://localhost:3000/categories/categories.json'
   //   )
   // },
   async fetch() {
-    this.categories = await this.$axios.$get(
-      'http://localhost:8000/api/categories'
-    )
+    this.categories = await this.$axios.$get(categoryUrl())
   },
 }
 </script>

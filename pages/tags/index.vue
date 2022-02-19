@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { tagUrl } from '@/helpers'
 
 export default {
   data() {
@@ -56,7 +56,7 @@ export default {
   }, */
 
   async fetch() {
-    this.tags = await this.$axios.$get(`paginated-tags`)
+    this.tags = await this.$axios.$get(tagUrl())
   },
 }
 </script>
