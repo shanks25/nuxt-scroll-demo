@@ -49,7 +49,7 @@
       </div>
       <div class="post-tag" style="margin-left: 400px">
         <ul class="tag-list">
-          <Tag v-for="tag in post.tags" :key="tag.id" :tag="tag"></Tag>
+          <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
       </div>
       <div class="post-meta">

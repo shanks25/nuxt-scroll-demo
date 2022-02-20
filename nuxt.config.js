@@ -53,7 +53,7 @@ export default {
     // 'bootstrap-vue/nuxt',
   ],
 
-  plugins: ['@/plugins/vueLaravelPagination'],
+  plugins: ['@/plugins/vueLaravelPagination', '@/plugins/helpers'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -67,6 +67,11 @@ export default {
     manifest: {
       lang: 'en',
     },
+  },
+
+  loading: {
+    color: '#25aac0',
+    height: '2px',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

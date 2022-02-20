@@ -7,7 +7,7 @@
       :limit="6"
     ></pagination>
 
-    <Posts v-for="post in posts.data" :key="post.id" :post="post" />
+    <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
 
     <pagination
       :data="posts"
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { postUrl } from '@/helpers'
 export default {
   data() {
     return {
@@ -26,9 +25,7 @@ export default {
     }
   },
 
-  mounted() {
-    // console.log(postUrl())
-  },
+  mounted() {},
   methods: {
     getResults(page = 1) {
       if (this.$route.query.page != page) {
@@ -38,7 +35,7 @@ export default {
           },
         })
       }
-      this.$axios.$get(postUrl(page)).then((response) => {
+      this.$axios.$get(this.postUrl(page)).then((response) => {
         this.posts = response
       })
       window.scrollTo(0, 0)
@@ -49,7 +46,7 @@ export default {
     if (!page) {
       page = 1
     }
-    this.posts = await this.$axios.$get(postUrl(page))
+    this.posts = await this.$axios.$get(this.postUrl(page))
   },
 
   /*   async fetch() {

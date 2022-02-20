@@ -7,7 +7,7 @@ let postUrl = (page = 1) => {
 
 let tagUrl = (page = 1) => {
   if (laravelMode()) {
-    return baseUrl() + `paginated-tags?page=${page}`
+    return baseUrl() + `tags?page=${page}`
   }
   return process.env.NUXT_BASE_URL + `json/tags/tags${page}.json`
 }

@@ -6,7 +6,7 @@
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
-    <Posts v-for="post in posts.data" :key="post.id" :post="post" />
+    <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { postUrl } from '@/helpers'
+
 export default {
   data() {
     return {
@@ -34,7 +36,8 @@ export default {
     },
   },
   async fetch() {
-    this.posts = await this.$axios.$get(`posts?page=${this.$route.params.page}`)
+    let page = this.$route.params.page
+    this.posts = await this.$axios.$get(this.postUrl(page))
   },
 }
 </script>
