@@ -11,7 +11,7 @@
               <!-- <nuxt keep-alive /> -->
             </div>
           </div>
-          <LayoutAds />
+          <!-- <LayoutAds /> -->
         </div>
       </main>
     </div>

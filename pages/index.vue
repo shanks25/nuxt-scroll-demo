@@ -6,10 +6,13 @@
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
-
-    <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+    <Loader v-if="loader" />
+    <div v-else>
+      <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+    </div>
 
     <pagination
+      v-if="!loader"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
@@ -36,10 +39,11 @@ export default {
           },
         })
       }
+      this.loader = true
       this.$axios.$get(this.postUrl(page)).then((response) => {
         this.posts = response
+        this.loader = false
       })
-      window.scrollTo(0, 0)
     },
   },
   async fetch() {

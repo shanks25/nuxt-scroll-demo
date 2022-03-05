@@ -39,13 +39,11 @@
         </div>
       </header>
       <div class="article-content">
-        <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
-          <div class="image-post post-view">
-            <picture>
-              <img :src="post.image" :alt="post.ocr" />
-            </picture>
-          </div>
-        </NuxtLink>
+        <div class="image-post post-view">
+          <picture>
+            <img :src="post.image" :alt="post.ocr" />
+          </picture>
+        </div>
       </div>
       <div class="post-tag" style="margin-left: 400px">
         <ul class="tag-list">

@@ -1,6 +1,10 @@
 <template>
   <div>
     <FeaturedTags />
+    <template>
+      <Loader v-if="$fetchState.pending" />
+    </template>
+
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
