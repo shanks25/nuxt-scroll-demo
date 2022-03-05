@@ -10,9 +10,6 @@
                 ><i class="bi bi-house-door-fill"></i>Hot</nuxt-link
               >
             </span>
-            <span class="dright"
-              ><a href="#."><i class="bi bi-three-dots"></i></a
-            ></span>
           </li>
 
           <li>
@@ -21,9 +18,6 @@
                 ><i class="bi bi-stopwatch"></i> Tags</nuxt-link
               >
             </span>
-            <span class="dright"
-              ><a href="#."><i class="bi bi-three-dots"></i></a
-            ></span>
           </li>
           <li>
             <span class="dLeft">
@@ -31,9 +25,6 @@
                 ><i class="bi bi-lightning-charge-fill"></i> Photos</nuxt-link
               >
             </span>
-            <span class="dright"
-              ><a href="#."><i class="bi bi-three-dots"></i></a
-            ></span>
           </li>
         </ul>
       </section>

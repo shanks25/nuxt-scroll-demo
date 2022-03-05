@@ -57,7 +57,9 @@
           <div class="act-left">
             <ul class="btn-vote left">
               <li>
-                <a class="up" href="#."><i class="bi bi-arrow-up"></i>2840</a>
+                <a class="up" href="#."
+                  ><i class="bi bi-arrow-up"></i>{{ post.post_upvotes }}</a
+                >
               </li>
             </ul>
           </div>
