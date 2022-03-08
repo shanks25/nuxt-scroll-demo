@@ -6,10 +6,13 @@
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
-
-    <Posts v-for="post in posts.data" :key="post.id" :post="post" />
+    <Loader v-if="loader" />
+    <div v-else>
+      <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+    </div>
 
     <pagination
+      v-if="!loader"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
@@ -18,17 +21,15 @@
 </template>
 
 <script>
-import { postUrl } from '@/helpers'
 export default {
   data() {
     return {
       posts: {},
+      loader: false,
     }
   },
 
-  mounted() {
-    // console.log(postUrl())
-  },
+  mounted() {},
   methods: {
     getResults(page = 1) {
       if (this.$route.query.page != page) {
@@ -38,10 +39,11 @@ export default {
           },
         })
       }
-      this.$axios.$get(postUrl(page)).then((response) => {
+      this.loader = true
+      this.$axios.$get(this.postUrl(page)).then((response) => {
         this.posts = response
+        this.loader = false
       })
-      window.scrollTo(0, 0)
     },
   },
   async fetch() {
@@ -49,7 +51,7 @@ export default {
     if (!page) {
       page = 1
     }
-    this.posts = await this.$axios.$get(postUrl(page))
+    this.posts = await this.$axios.$get(this.postUrl(page))
   },
 
   /*   async fetch() {

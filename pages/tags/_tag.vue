@@ -11,7 +11,7 @@
       :limit="6"
     ></pagination>
 
-    <Posts v-for="post in posts.data" :key="post.id" :post="post" />
+    <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
 
     <pagination
       :data="posts"

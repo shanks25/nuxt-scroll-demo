@@ -10,9 +10,6 @@
                 ><i class="bi bi-house-door-fill"></i>Hot</nuxt-link
               >
             </span>
-            <span class="dright"
-              ><a href="#."><i class="bi bi-three-dots"></i></a
-            ></span>
           </li>
 
           <li>
@@ -21,9 +18,6 @@
                 ><i class="bi bi-stopwatch"></i> Tags</nuxt-link
               >
             </span>
-            <span class="dright"
-              ><a href="#."><i class="bi bi-three-dots"></i></a
-            ></span>
           </li>
           <li>
             <span class="dLeft">
@@ -31,9 +25,6 @@
                 ><i class="bi bi-lightning-charge-fill"></i> Photos</nuxt-link
               >
             </span>
-            <span class="dright"
-              ><a href="#."><i class="bi bi-three-dots"></i></a
-            ></span>
           </li>
         </ul>
       </section>
@@ -42,8 +33,8 @@
         <h4>Section</h4>
         <ul>
           <Section
-            v-for="category in categories.data"
-            :key="category.id"
+            v-for="(category, index) in categories.data"
+            :key="index"
             :category="category"
           />
         </ul>
@@ -53,17 +44,13 @@
 </template>
 
 <script>
-import { categoryUrl } from '@/helpers'
-
 export default {
   data() {
     return {
       categories: [],
     }
   },
-  mounted() {
-    console.log(categoryUrl())
-  },
+  mounted() {},
 
   // async fetch() {
   //   this.categories = await this.$axios.$get(
@@ -71,7 +58,7 @@ export default {
   //   )
   // },
   async fetch() {
-    this.categories = await this.$axios.$get(categoryUrl())
+    this.categories = await this.$axios.$get(this.categoryUrl())
   },
 }
 </script>

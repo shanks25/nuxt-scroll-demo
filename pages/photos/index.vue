@@ -15,7 +15,6 @@
 
 
 <script>
-
 export default {
   data() {
     return {
@@ -51,7 +50,7 @@ export default {
     },
   },
   async fetch() {
-    this.posts = await this.$axios.$get(`photos`)
+    this.posts = await this.$axios.$get(this.photoUrl())
   },
 }
 </script>

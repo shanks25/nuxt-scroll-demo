@@ -9,7 +9,7 @@
             @pagination-change-page="getResults"
             :limit="6"
           ></pagination>
-          <Tag v-for="tag in tags.data" :key="tag.id" :tag="tag" />
+          <Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" />
         </div>
       </div>
     </div>
@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { tagUrl } from '@/helpers'
-
 export default {
   data() {
     return {
@@ -56,7 +54,7 @@ export default {
   }, */
 
   async fetch() {
-    this.tags = await this.$axios.$get(tagUrl())
+    this.tags = await this.$axios.$get(this.tagUrl())
   },
 }
 </script>

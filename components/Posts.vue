@@ -39,17 +39,15 @@
         </div>
       </header>
       <div class="article-content">
-        <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
-          <div class="image-post post-view">
-            <picture>
-              <img :src="post.image" :alt="post.ocr" />
-            </picture>
-          </div>
-        </NuxtLink>
+        <div class="image-post post-view">
+          <picture>
+            <img :src="post.image" :alt="post.ocr" />
+          </picture>
+        </div>
       </div>
       <div class="post-tag" style="margin-left: 400px">
         <ul class="tag-list">
-          <Tag v-for="tag in post.tags" :key="tag.id" :tag="tag"></Tag>
+          <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
       </div>
       <div class="post-meta">
@@ -57,7 +55,9 @@
           <div class="act-left">
             <ul class="btn-vote left">
               <li>
-                <a class="up" href="#."><i class="bi bi-arrow-up"></i>2840</a>
+                <a class="up" href="#."
+                  ><i class="bi bi-arrow-up"></i>{{ post.post_upvotes }}</a
+                >
               </li>
             </ul>
           </div>
