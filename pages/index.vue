@@ -40,10 +40,13 @@ export default {
         })
       }
       this.loader = true
-      this.$axios.$get(this.postUrl(page)).then((response) => {
-        this.posts = response
-        this.loader = false
-      })
+      this.$axios
+        .$get(this.postUrl(page))
+        .then((response) => {
+          this.posts = response
+          this.loader = false
+        })
+        .then(() => {})
     },
   },
   async fetch() {

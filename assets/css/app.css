@@ -564,3 +564,12 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
         height: 100%;
     } 
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
