@@ -31,14 +31,17 @@ export default {
 
   mounted() {},
   methods: {
-    getResults(page = 1) {
+    getResults(page = 1, broswerBack = false) {
       if (this.$route.query.page != page) {
-        this.$router.replace({
+        this.$router.push({
           query: {
             page: page,
           },
         })
       }
+    },
+
+    loadPosts(page) {
       this.loader = true
       this.$axios
         .$get(this.postUrl(page))
@@ -57,6 +60,11 @@ export default {
     this.posts = await this.$axios.$get(this.postUrl(page))
   },
 
+  watch: {
+    $route(to, from) {
+      this.loadPosts(to.query.page)
+    },
+  },
   /*   async fetch() {
     let page = this.$route.query.page
     if (!page) {
