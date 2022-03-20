@@ -97,6 +97,7 @@ export default {
     async submit() {
       try {
         await this.$axios.post('/contactus', this.form)
+        this.form = {}
         this.status = true
       } catch (e) {}
     },

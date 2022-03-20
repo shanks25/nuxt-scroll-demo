@@ -11,12 +11,20 @@
       :limit="6"
     ></pagination>
 
-    <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+    <Loader v-if="loader" />
+
+    <Posts
+      v-for="(post, index) in posts.data"
+      :key="index"
+      :post="post"
+      v-else
+    />
 
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
+      v-if="!loader"
     ></pagination>
   </div>
 </template>
@@ -26,6 +34,7 @@ export default {
   data() {
     return {
       posts: {},
+      loader: false,
     }
   },
   head() {
@@ -44,20 +53,30 @@ export default {
   methods: {
     getResults(page = 1) {
       if (this.$route.query.page != page) {
-        this.$router.replace({
+        this.$router.push({
           query: {
             page: page,
           },
         })
       }
+    },
+
+    loadPosts(page) {
+      this.loader = true
       this.$axios
         .$get(`tag/${this.$route.params.tag}?page=${page}`)
         .then((response) => {
           this.posts = response
+          this.loader = false
         })
     },
   },
 
+  watch: {
+    $route(to, from) {
+      this.loadPosts(to.query.page)
+    },
+  },
   async fetch() {
     let page = this.$route.query.page ? this.$route.query.page : 1
     this.posts = await this.$axios.$get(

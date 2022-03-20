@@ -17,9 +17,7 @@
       </div>
       <Back />
 
-      <Loader v-if="$fetchState.pending" />
-
-      <div class="profile-right" v-else>
+      <div class="profile-right">
         <h2>{{ posts.category_name }}</h2>
         <p>
           {{ posts.category_description }}
@@ -27,13 +25,22 @@
       </div>
     </div>
     <FeaturedTags />
+
     <pagination
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
-    <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+    <Loader v-if="loader" />
+
+    <Posts
+      v-for="(post, index) in posts.data"
+      :key="index"
+      :post="post"
+      v-else
+    />
     <pagination
+      v-if="!loader"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
@@ -46,6 +53,7 @@ export default {
   data() {
     return {
       posts: {},
+      loader: false,
     }
   },
 
@@ -70,23 +78,29 @@ export default {
   methods: {
     getResults(page = 1) {
       if (this.$route.query.page != page) {
-        this.$router.replace({
+        this.$router.push({
           query: {
             page: page,
           },
         })
       }
+    },
 
+    loadPosts(page) {
+      this.loader = true
       this.$axios
         .$get(`category/${this.$route.params.category}?page=${page}`)
         .then((response) => {
           this.posts = response
+          this.loader = false
         })
     },
   },
-  // watch: {
-  //   '$router.query': '$fetch',
-  // },
+  watch: {
+    $route(to, from) {
+      this.loadPosts(to.query.page)
+    },
+  },
   async fetch() {
     let page = this.$route.query.page ? this.$route.query.page : 1
     this.posts = await this.$axios.$get(

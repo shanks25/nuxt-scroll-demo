@@ -1,9 +1,12 @@
 <template>
-<li>
-     <NuxtLink class="c-tag" :to="{ name: 'tags-tag', params: { tag: tag.slug } }" >
-         {{tag.name}} 
+  <li>
+    <NuxtLink
+      class="c-tag"
+      :to="{ name: 'tag-tag', params: { tag: tag.slug } }"
+    >
+      {{ tag.name }}
     </NuxtLink>
-    </li>
+  </li>
 </template>
 
 <script>
