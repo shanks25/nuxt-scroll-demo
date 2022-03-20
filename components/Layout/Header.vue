@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <div class="container">
       <button class="toggle-drawer-btn" onclick="toggleDrawer()">☰</button>
-      <nuxt-link :to="{ name: 'index' }" class="navbar-brand">CMemes</nuxt-link>
+      <nuxt-link :to="{ name: 'index' }" class="navbar-brand"><img src="../../assets/images/logo.png" /></nuxt-link>
       <button
         class="navbar-toggler"
         type="button"
