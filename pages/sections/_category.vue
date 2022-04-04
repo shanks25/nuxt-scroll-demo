@@ -3,7 +3,10 @@
     <div class="profile-header">
       <div class="profile-image">
         <picture>
-          <img :src="posts.category_image" :alt="posts.category_name" />
+          <img
+            src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp"
+            :alt="posts.category_name"
+          />
         </picture>
       </div>
       <Back />

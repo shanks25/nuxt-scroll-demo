@@ -11,7 +11,7 @@
           :src="
             category.image
               ? category.image
-              : 'https://i.picsum.photos/id/372/200/200.jpg?hmac=QFGGlcWGNWBK0oDD1jghIaCvGIFU5iJJcd2VhF5oH6o'
+              : 'https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557391851.3248_Za4UdA_100x100wp.webp'
           "
           :alt="category.name"
           class="thumb-icon"

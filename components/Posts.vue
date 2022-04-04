@@ -11,7 +11,10 @@
             }"
           >
             <picture>
-              <img :src="post.categories.image" :alt="post.categories.name" />
+              <img
+                src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp"
+                :alt="post.categories.name"
+              />
             </picture>
           </NuxtLink>
           <p class="post-cat">
