@@ -11,10 +11,7 @@
             }"
           >
             <picture>
-              <img
-                src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557391851.3248_Za4UdA_100x100.jpg"
-                :alt="post.categories.name"
-              />
+              <img :src="post.categories.image" :alt="post.categories.name" />
             </picture>
           </NuxtLink>
           <p class="post-cat">

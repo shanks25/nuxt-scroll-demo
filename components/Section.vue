@@ -8,7 +8,11 @@
     >
       <span class="dLeft">
         <img
-          src="https://i.picsum.photos/id/372/200/200.jpg?hmac=QFGGlcWGNWBK0oDD1jghIaCvGIFU5iJJcd2VhF5oH6o"
+          :src="
+            category.image
+              ? category.image
+              : 'https://i.picsum.photos/id/372/200/200.jpg?hmac=QFGGlcWGNWBK0oDD1jghIaCvGIFU5iJJcd2VhF5oH6o'
+          "
           :alt="category.name"
           class="thumb-icon"
         />{{ category.name }}
