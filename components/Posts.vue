@@ -12,7 +12,7 @@
           >
             <picture>
               <img
-                src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557391851.3248_Za4UdA_100x100.jpg"
+                src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp"
                 :alt="post.categories.name"
               />
             </picture>
