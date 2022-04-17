@@ -1,7 +1,9 @@
 <template>
   <div>
     <FeaturedTags />
+    <!-- :class="partialPagination" -->
     <pagination
+      class="list-page-pagination"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
@@ -12,6 +14,7 @@
     </div>
 
     <pagination
+      class="list-page-pagination"
       v-if="!loader"
       :data="posts"
       @pagination-change-page="getResults"
@@ -29,7 +32,9 @@ export default {
     }
   },
 
-  mounted() {},
+  mounted() {
+    // console.log()
+  },
   methods: {
     getResults(page = 1, broswerBack = false) {
       if (this.$route.query.page != page) {
@@ -65,6 +70,8 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
+
+  computed: {},
   /*   async fetch() {
     let page = this.$route.query.page
     if (!page) {

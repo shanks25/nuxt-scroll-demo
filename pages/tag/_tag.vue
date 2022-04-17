@@ -9,6 +9,7 @@
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
+      class="list-page-pagination"
     ></pagination>
 
     <Loader v-if="loader" />
@@ -25,6 +26,7 @@
       @pagination-change-page="getResults"
       :limit="6"
       v-if="!loader"
+      class="list-page-pagination"
     ></pagination>
   </div>
 </template>
@@ -71,7 +73,9 @@ export default {
         })
     },
   },
-
+  mounted() {
+    console.log(this.$route)
+  },
   watch: {
     $route(to, from) {
       this.loadPosts(to.query.page)

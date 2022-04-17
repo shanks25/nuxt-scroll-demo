@@ -23,7 +23,9 @@ export default {
       tags: {},
     }
   },
-
+  mounted() {
+    console.log(this.$route)
+  },
   methods: {
     getResults(page = 1) {
       this.$router.push({

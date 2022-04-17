@@ -21,6 +21,7 @@
     <FeaturedTags />
 
     <pagination
+      class="list-page-pagination"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
@@ -38,6 +39,7 @@
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
+      class="list-page-pagination"
     ></pagination>
   </div>
 </template>
