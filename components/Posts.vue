@@ -45,7 +45,7 @@
           </picture>
         </div>
       </div>
-      <div class="post-tag" style="margin-left: 400px">
+      <div class="post-tag">
         <ul class="tag-list">
           <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
@@ -55,9 +55,7 @@
           <div class="act-left">
             <ul class="btn-vote left">
               <li>
-                <a class="up" href="#."
-                  ><i class="bi bi-arrow-up"></i>{{ post.post_upvotes }}</a
-                >
+                <a class="up" href="#."><i class="bi bi-arrow-up"></i>{{ post.post_upvotes }}</a>
               </li>
             </ul>
           </div>

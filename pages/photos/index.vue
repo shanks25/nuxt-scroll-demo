@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="photo_bx">
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">

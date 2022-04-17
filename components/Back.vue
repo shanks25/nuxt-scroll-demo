@@ -1,6 +1,6 @@
 <template>
-<div>
-    <button class="btn btn-primary" style="margin-left:600px" @click="$router.go(-1)"> back</button>
+<div class="back_btn">
+    <button class="btn btn-primary" @click="$router.go(-1)"> Back</button>
 </div>
 </template>
 

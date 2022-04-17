@@ -532,7 +532,34 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
     width: 100%;    
 }
 .listsect p{font-weight:normal;}
-
+.navbar-brand img {
+    width: 120px;
+}
+.photo_bx .post-actions li a {
+    border-color: #c6c9cd;
+    padding: 2px 0;
+    text-align: center;
+}
+.photo_bx .post-actions li {
+    display: inline-block;
+    width: 50px;
+    margin: 0 10px 8px 1px;
+    text-align: center;
+}
+.back_btn {
+    float: left;
+}
+.back_btn .btn.btn-primary {
+    padding: 5px 13px;
+	margin-right: 7px;    
+}
+.tags_top .pagination .page-item:not(:first-child) .page-link {
+    margin-left: 7px;
+}
+.tags_bx li a{padding: 5px 14px;}
+.tags_top {
+    margin-bottom: 5px;
+}
 
 
 @media (min-width: 991px) {

@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div class="">
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
-          <Back />
-          <pagination
-            :data="tags"
-            @pagination-change-page="getResults"
-            :limit="6"
-          ></pagination>
-          <Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" />
+          <div class="tags_top">
+			  <Back />
+			  <pagination 
+				:data="tags"
+				@pagination-change-page="getResults"
+				:limit="6"
+			  ></pagination>
+		  </div>
+          <ul class="tags_bx"><Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" /></ul>
         </div>
       </div>
     </div>
