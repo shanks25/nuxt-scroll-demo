@@ -46,19 +46,22 @@
         </div>
       </div>
       <div class="post-tag" style="margin-left: 400px">
-        <ShareNetwork
-          v-for="network in networks"
-          :network="network.network"
-          :key="network.network"
-          :style="{ backgroundColor: network.color }"
-          :url="sharing.url"
-          :title="sharing.title"
-          :description="sharing.description"
-          class="social-share"
-        >
-          <i :class="network.icon"></i>
-          <span>{{ network.name }}</span>
-        </ShareNetwork>
+        <client-only>
+          <ShareNetwork
+            v-for="network in networks"
+            :network="network.network"
+            :key="network.network"
+            :style="{ backgroundColor: network.color }"
+            :url="sharing.url"
+            :title="sharing.title"
+            :description="sharing.description"
+            class="social-share"
+          >
+            <i :class="network.icon"></i>
+            <span>{{ network.name }}</span>
+          </ShareNetwork>
+        </client-only>
+
         <ul class="tag-list">
           <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
