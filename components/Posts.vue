@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="post-tag" style="margin-left: 400px">
-        <!-- <client-only>
+        <client-only>
           <ShareNetwork
             v-for="network in networks"
             :network="network.network"
@@ -59,7 +59,7 @@
           >
             <i :class="network.icon"></i>
             <span>{{ network.name }}</span>
-          </ShareNetwork> -->
+          </ShareNetwork>
         </client-only>
 
         <ul class="tag-list">
@@ -88,54 +88,54 @@ export default {
   props: {
     post: Object,
   },
-  // data() {
-  //   return {
-  //     sharingQoutes: '',
-  //     sharing: {
-  //       url: process.env.NUXT_SERVER_BASE_URL + '/posts/' + this.post.slug,
-  //       title: this.post.title,
-  //       description: this.post.ocr,
-  //     },
-  //     networks: [
-  //       {
-  //         network: 'facebook',
-  //         name: 'Facebook',
-  //         icon: 'fab fah fa-lg fa-facebook-f',
-  //         color: '#1877f2',
-  //       },
-  //       {
-  //         network: 'pinterest',
-  //         name: 'Pinterest',
-  //         icon: 'fab fah fa-lg fa-pinterest',
-  //         color: '#bd081c',
-  //       },
-  //       {
-  //         network: 'telegram',
-  //         name: 'Telegram',
-  //         icon: 'fab fah fa-lg fa-telegram-plane',
-  //         color: '#0088cc',
-  //       },
-  //       {
-  //         network: 'tumblr',
-  //         name: 'Tumblr',
-  //         icon: 'fab fah fa-lg fa-tumblr',
-  //         color: '#35465c',
-  //       },
-  //       {
-  //         network: 'twitter',
-  //         name: 'Twitter',
-  //         icon: 'fab fah fa-lg fa-twitter',
-  //         color: '#1da1f2',
-  //       },
-  //       {
-  //         network: 'whatsapp',
-  //         name: 'Whatsapp',
-  //         icon: 'fab fah fa-lg fa-whatsapp',
-  //         color: '#25d366',
-  //       },
-  //     ],
-  //   }
-  // },
-  // mounted() {},
+  data() {
+    return {
+      sharingQoutes: '',
+      sharing: {
+        url: process.env.NUXT_SERVER_BASE_URL + '/posts/' + this.post.slug,
+        title: this.post.title,
+        description: this.post.ocr,
+      },
+      networks: [
+        {
+          network: 'facebook',
+          name: 'Facebook',
+          icon: 'fab fah fa-lg fa-facebook-f',
+          color: '#1877f2',
+        },
+        {
+          network: 'pinterest',
+          name: 'Pinterest',
+          icon: 'fab fah fa-lg fa-pinterest',
+          color: '#bd081c',
+        },
+        {
+          network: 'telegram',
+          name: 'Telegram',
+          icon: 'fab fah fa-lg fa-telegram-plane',
+          color: '#0088cc',
+        },
+        {
+          network: 'tumblr',
+          name: 'Tumblr',
+          icon: 'fab fah fa-lg fa-tumblr',
+          color: '#35465c',
+        },
+        {
+          network: 'twitter',
+          name: 'Twitter',
+          icon: 'fab fah fa-lg fa-twitter',
+          color: '#1da1f2',
+        },
+        {
+          network: 'whatsapp',
+          name: 'Whatsapp',
+          icon: 'fab fah fa-lg fa-whatsapp',
+          color: '#25d366',
+        },
+      ],
+    }
+  },
+  mounted() {},
 }
 </script>
