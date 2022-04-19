@@ -49,6 +49,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/dotenv',
+    'vue-social-sharing/nuxt',
     // 'bootstrap-vue/nuxt',
   ],
 

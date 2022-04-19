@@ -46,6 +46,19 @@
         </div>
       </div>
       <div class="post-tag" style="margin-left: 400px">
+        <ShareNetwork
+          v-for="network in networks"
+          :network="network.network"
+          :key="network.network"
+          :style="{ backgroundColor: network.color }"
+          :url="sharing.url"
+          :title="sharing.title"
+          :description="sharing.description"
+          class="social-share"
+        >
+          <i :class="network.icon"></i>
+          <span>{{ network.name }}</span>
+        </ShareNetwork>
         <ul class="tag-list">
           <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
@@ -72,5 +85,54 @@ export default {
   props: {
     post: Object,
   },
+  data() {
+    return {
+      sharingQoutes: '',
+      sharing: {
+        url: process.env.NUXT_SERVER_BASE_URL + '/posts/' + this.post.slug,
+        title: this.post.title,
+        description: this.post.ocr,
+      },
+      networks: [
+        {
+          network: 'facebook',
+          name: 'Facebook',
+          icon: 'fab fah fa-lg fa-facebook-f',
+          color: '#1877f2',
+        },
+        {
+          network: 'pinterest',
+          name: 'Pinterest',
+          icon: 'fab fah fa-lg fa-pinterest',
+          color: '#bd081c',
+        },
+        {
+          network: 'telegram',
+          name: 'Telegram',
+          icon: 'fab fah fa-lg fa-telegram-plane',
+          color: '#0088cc',
+        },
+        {
+          network: 'tumblr',
+          name: 'Tumblr',
+          icon: 'fab fah fa-lg fa-tumblr',
+          color: '#35465c',
+        },
+        {
+          network: 'twitter',
+          name: 'Twitter',
+          icon: 'fab fah fa-lg fa-twitter',
+          color: '#1da1f2',
+        },
+        {
+          network: 'whatsapp',
+          name: 'Whatsapp',
+          icon: 'fab fah fa-lg fa-whatsapp',
+          color: '#25d366',
+        },
+      ],
+    }
+  },
+  mounted() {},
 }
 </script>

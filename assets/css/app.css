@@ -573,3 +573,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
 .page-leave-to {
   opacity: 0;
 }
+
+.social-share{
+    color: white;
+}
