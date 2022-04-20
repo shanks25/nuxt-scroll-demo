@@ -52,14 +52,14 @@
           :key="network.network"
           :style="{ backgroundColor: network.color }"
           :url="sharing.url"
-          :title="sharing.title"
-          :description="sharing.description"
+          :title="post.title"
+          :description="post.description"
           class="social-share"
+          @open="open(network.network)"
         >
           <i :class="network.icon"></i>
           <span>{{ network.name }}</span>
         </ShareNetwork>
-
         <ul class="tag-list">
           <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
@@ -132,6 +132,17 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    async open(network = 'no network') {
+      console.log(network)
+      try {
+        await this.$axios.post('/social-shares', {
+          post_title: this.post.title,
+          network,
+        })
+      } catch (e) {}
+    },
   },
   mounted() {},
 }
