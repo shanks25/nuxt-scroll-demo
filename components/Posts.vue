@@ -46,7 +46,6 @@
               :alt="post.ocr"
               :class="{ fullHeight: $route.name == 'posts-slug' }"
             />
-            />
           </picture>
         </div>
       </div>
