@@ -41,7 +41,12 @@
       <div class="article-content">
         <div class="image-post post-view">
           <picture>
-            <img :src="post.image" :alt="post.ocr" />
+            <img
+              :src="post.image"
+              :alt="post.ocr"
+              :class="{ fullHeight: $route.name == 'posts-slug' }"
+            />
+            />
           </picture>
         </div>
       </div>
@@ -49,6 +54,7 @@
         <ShareNetwork
           v-for="network in networks"
           :network="network.network"
+          v-on:click="crawl()"
           :key="network.network"
           :style="{ backgroundColor: network.color }"
           :url="sharing.url"
@@ -143,7 +149,12 @@ export default {
         })
       } catch (e) {}
     },
+    crawl() {
+      return true
+    },
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$route)
+  },
 }
 </script>

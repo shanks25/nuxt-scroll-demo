@@ -12,7 +12,7 @@
       <Back />
 
       <div class="profile-right">
-        <h2>{{ posts.category_name }}</h2>
+        <h1>{{ posts.category_name }}</h1>
         <p>
           {{ posts.category_description }}
         </p>

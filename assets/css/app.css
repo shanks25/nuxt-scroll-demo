@@ -371,7 +371,9 @@ article header .post-section .thumb-icon picture img{border-radius: 3px;}
 .article-content .image-post.post-view picture{border-radius: 4px; background-color: #f4f4f4; height:560px;}
 .article-content .image-post.post-view img {max-height: 660px; object-fit: contain; }
 .article-content .image-post.post-view video {height: 500px; object-fit: contain; }
-
+.fullHeight{
+    max-height: 1000px !important; 
+}
 .dropbtn { background-color: transparent; color: #777; padding: 4px 10px; font-size: 16px; border: 1px solid #ced4da; cursor: pointer; border-radius: 4px; margin-left: 5px }
 .dropbtn:hover, .dropbtn:focus { background-color: rgba(0,0,0,.06); }
 .dropdown { float: right; position: relative; display: inline-block; }

@@ -2,7 +2,7 @@
   <div>
     <Back />
     <Loader v-if="$fetchState.pending" />
-    <h3 v-else>{{ posts.keta }}</h3>
+    <h1 v-else>{{ posts.keta }}</h1>
 
     <br />
     <pagination
