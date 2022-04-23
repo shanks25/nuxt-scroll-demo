@@ -8,7 +8,6 @@
             class="list-page-pagination"
             :data="tags"
             @pagination-change-page="getResults"
-            :limit="6"
           ></pagination>
           <Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" />
           <pagination

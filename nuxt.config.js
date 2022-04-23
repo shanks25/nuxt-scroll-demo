@@ -2,6 +2,9 @@ const axios = require('axios')
 require('dotenv').config()
 
 export default {
+  generate: {
+    fallback: '404.html',
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ddMemes',

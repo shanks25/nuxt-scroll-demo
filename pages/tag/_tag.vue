@@ -1,8 +1,8 @@
 <template>
   <div>
     <Back />
-    <Loader v-if="$fetchState.pending" />
-    <h1 v-else>{{ posts.keta }}</h1>
+    <!-- <Loader v-if="$fetchState.pending" /> -->
+    <h1>{{ posts.desc }}</h1>
 
     <br />
     <pagination
@@ -74,18 +74,26 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$route)
+    // console.log(this.$route)
   },
   watch: {
     $route(to, from) {
       this.loadPosts(to.query.page)
     },
   },
-  async fetch() {
-    let page = this.$route.query.page ? this.$route.query.page : 1
-    this.posts = await this.$axios.$get(
-      `tag/${this.$route.params.tag}?page=${page}`
-    )
+  async asyncData({ params, $axios, error, query = 1 }) {
+    try {
+      const posts = await $axios.$get(`tag/${params.tag}?page=${query.page}`)
+      return { posts }
+    } catch (e) {
+      error({ statusCode: 404, message: 'Post not found' })
+    }
   },
+  // async fetch() {
+  //   let page = this.$route.query.page ? this.$route.query.page : 1
+  //   this.posts = await this.$axios.$get(
+  //     `tag/${this.$route.params.tag}?page=${page}`
+  //   )
+  // },
 }
 </script>

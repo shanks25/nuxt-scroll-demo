@@ -140,7 +140,7 @@ export default {
   },
   methods: {
     async open(network = 'no network') {
-      console.log(network)
+      // console.log(network)
       try {
         await this.$axios.post('/social-shares', {
           post_title: this.post.title,
@@ -151,9 +151,6 @@ export default {
     crawl() {
       return true
     },
-  },
-  mounted() {
-    console.log(this.$route)
   },
 }
 </script>
