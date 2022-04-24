@@ -578,7 +578,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
     margin-bottom: 5px;
 }
 .list-page-pagination .page-link {
-    padding: 4px 6px;
+    padding: 4px 12px;
     box-shadow: none;
 }
 i.fab.fah.fa-lg.fa-facebook-f {
