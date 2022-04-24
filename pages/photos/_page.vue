@@ -6,12 +6,14 @@
     </template>
 
     <pagination
+     class="list-page-pagination"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
     <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
     <pagination
+      class="list-page-pagination"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
