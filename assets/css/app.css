@@ -375,7 +375,7 @@ article header .post-section .thumb-icon picture img{border-radius: 3px;}
 .fullHeight{
     max-height: 1000px !important; 
 }
-.dropbtn { background-color: transparent; color: #777; padding: 4px 10px; font-size: 16px; border: 1px solid #ced4da; cursor: pointer; border-radius: 4px; margin-left: 5px }
+.dropbtn { background-color: transparent; color: #777; padding: 4px 18px; font-size: 16px; border: 1px solid #ced4da; cursor: pointer; border-radius: 4px; margin-left: 5px }
 .dropbtn:hover, .dropbtn:focus { background-color: rgba(0,0,0,.06); }
 .dropdown {  position: relative; display: inline-block; }
 .dropdown-content { display: none; position: absolute; background-color: #fff; min-width: 160px; overflow: auto; box-shadow: none; right: 0; z-index: 1; border: 1px solid #ced4da; border-radius: 4px; top: 37px; }
@@ -385,7 +385,7 @@ article header .post-section .thumb-icon picture img{border-radius: 3px;}
 .show {display: block;}
 .share-dropdown .dropdown-content a.twitt i{color:#26a0ef;}
 .share-dropdown .dropdown-content a.whatsapp i{color:#40c451;}
-.share-dropdown .dropdown-content a i{margin-right:8px; font-size: 16px; width: 16px;}
+.share-dropdown .dropdown-content a i{margin-right:8px; font-size: 20px; width: 18px;}
 .share-dropdown .dropdown-content a img{width: 16px; margin-right: 8px;}
 .save-post {float: right;}
 .save-post a{color: #777; font-size: 16px;}
@@ -599,7 +599,13 @@ i.fab.fah.fa-lg.fa-twitter {
 i.fab.fah.fa-lg.fa-whatsapp {
     color: #40c451;
 }
-
+#cm-main article .post-tag .tag-list .c-tag {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 3px 10px;
+}
 
 
 
