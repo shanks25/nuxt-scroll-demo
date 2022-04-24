@@ -83,6 +83,9 @@ export default {
   },
   async asyncData({ params, $axios, error, query = 1 }) {
     try {
+      if (!query.page) {
+        query.page = 1
+      }
       const posts = await $axios.$get(`tag/${params.tag}?page=${query.page}`)
       return { posts }
     } catch (e) {
