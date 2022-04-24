@@ -50,21 +50,7 @@
         </div>
       </div>
       <div class="post-tag">
-        <ShareNetwork
-          v-for="network in networks"
-          :network="network.network"
-          v-on:click="crawl()"
-          :key="network.network"
-          :style="{ backgroundColor: network.color }"
-          :url="sharing.url"
-          :title="post.title"
-          :description="post.description"
-          class="social-share"
-          @open="open(network.network)"
-        >
-          <i :class="network.icon"></i>
-          <span>{{ network.name }}</span>
-        </ShareNetwork>
+        
         <ul class="tag-list">
           <Tag v-for="(tag, index) in post.tags" :key="index" :tag="tag"></Tag>
         </ul>
@@ -78,6 +64,30 @@
               </li>
             </ul>
           </div>
+
+        <div class="act-right">									
+            <div class="dropdown share-dropdown">
+                <button type="button" class="dropbtn dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
+                <div  class="dropdown-content dropdown-menu">
+                  <ShareNetwork
+                    v-for="network in networks"
+                    :network="network.network"
+                    v-on:click="crawl()"
+                    :key="network.network"                    
+                    :url="sharing.url"
+                    :title="post.title"
+                    :description="post.description"
+                    class="social-share"
+                    @open="open(network.network)"
+                  >
+                    <i :class="network.icon"></i>
+                    <span>{{ network.name }}</span>
+                  </ShareNetwork>
+                </div>
+              </div>
+          </div>
+
+
         </div>
       </div>
     </article>
