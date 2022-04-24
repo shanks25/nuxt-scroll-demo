@@ -536,7 +536,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
 }
 .listsect p{font-weight:normal;}
 .navbar-brand img {
-    width: 120px;
+    width: 50px;
 }
 .photo_bx .post-actions li a {
     border-color: #c6c9cd;
@@ -660,6 +660,14 @@ i.fab.fah.fa-lg.fa-whatsapp {
     .ads-container-parent, .posts-container-parent {
         height: 100%;
     } 
+ 
+}
+@media (max-height: 576px){
+ 
+    .article-content .image-post.post-view img{
+        max-height: 540px;
+          object-fit: contain;
+    }
 }
 
 .page-enter-active,

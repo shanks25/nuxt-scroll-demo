@@ -2,7 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <div class="container">
       <button class="toggle-drawer-btn" onclick="toggleDrawer()">☰</button>
-      <nuxt-link :to="{ name: 'index' }" class="navbar-brand"><img src="../../assets/images/logo.png" /></nuxt-link>
+      <nuxt-link :to="{ name: 'index' }" class="navbar-brand"
+        ><img src="../../assets/images/logo.webp"
+      /></nuxt-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -33,7 +35,7 @@
             </nuxt-link>
           </li>
         </ul>
-        <form class="d-flex">
+        <!-- <form class="d-flex">
           <input
             class="form-control me-2"
             type="search"
@@ -41,7 +43,7 @@
             aria-label="Search"
           />
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </nav>
