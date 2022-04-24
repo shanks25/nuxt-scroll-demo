@@ -602,7 +602,7 @@ i.fab.fah.fa-lg.fa-whatsapp {
 #cm-main article .post-tag .tag-list .c-tag {
     margin-right: 8px;
     margin-bottom: 8px;
-    font-weight: 800;
+    /* font-weight: 800; */
     font-size: 14px;
     padding: 3px 10px;
 }

@@ -12,7 +12,10 @@
 
 <script>
 export default {
-  scrollToTop: true,
+  // scrollToTop: true,
+  mounted() {
+    window.scrollTo({ top: 0 })
+  },
   data() {
     return {
       post: {},
