@@ -12,7 +12,7 @@
       <Back />
 
       <div class="profile-right">
-        <h2>{{ posts.category_name }}</h2>
+        <h1>{{ posts.category_name }}</h1>
         <p>
           {{ posts.category_description }}
         </p>
@@ -21,6 +21,7 @@
     <FeaturedTags />
 
     <pagination
+      class="list-page-pagination"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
@@ -38,6 +39,7 @@
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
+      class="list-page-pagination"
     ></pagination>
   </div>
 </template>
@@ -95,11 +97,21 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
-  async fetch() {
-    let page = this.$route.query.page ? this.$route.query.page : 1
-    this.posts = await this.$axios.$get(
-      `category/${this.$route.params.category}?page=${page}`
-    )
+  async asyncData({ params, $axios, error, query = 1 }) {
+    try {
+      const posts = await $axios.$get(
+        `category/${params.category}?page=${query.page}`
+      )
+      return { posts }
+    } catch (e) {
+      error({ statusCode: 404, message: 'Post not found' })
+    }
   },
+  // async fetch() {
+  //   let page = this.$route.query.page ? this.$route.query.page : 1
+  //   this.posts = await this.$axios.$get(
+  //     `category/${this.$route.params.category}?page=${page}`
+  //   )
+  // },
 }
 </script>

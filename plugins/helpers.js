@@ -16,6 +16,13 @@ Vue.mixin({
       }
       return process.env.SERVER_BASE_URL
     },
+
+    partialPagination() {
+      const fullpaginatations = ['tags', 'photos']
+      return !fullpaginatations.includes(this.$route.name)
+        ? 'list-page-pagination'
+        : ''
+    },
   },
   methods: {
     // this will be determine based on value set in .env NUXT_JSON_MODE=posts,tags,categories

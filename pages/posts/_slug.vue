@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  scrollToTop: true,
   data() {
     return {
       post: {},
@@ -34,12 +35,12 @@ export default {
     }
   },
 
-  async asyncData({ params, $axios }) {
+  async asyncData({ params, $axios, error }) {
     try {
       const post = await $axios.$get(`posts/${params.slug}`)
       return { post }
     } catch (e) {
-      console.log(e.message)
+      error({ statusCode: 404, message: 'Post not found' })
     }
   },
 }
