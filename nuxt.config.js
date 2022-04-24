@@ -86,6 +86,11 @@ export default {
     },
   },
 
+  // router: {
+  //   scrollBehavior: function (to, from, savedPosition) {
+  //     return { x: 0, y: 0 }
+  //   },
+  // },
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
   },

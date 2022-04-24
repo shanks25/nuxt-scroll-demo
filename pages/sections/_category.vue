@@ -4,7 +4,10 @@
       <div class="profile-image">
         <picture>
           <img
-            src="https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp"
+            :src="
+              posts.category_image ||
+              'https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp'
+            "
             :alt="posts.category_name"
           />
         </picture>
@@ -12,7 +15,7 @@
       <Back />
 
       <div class="profile-right">
-        <h1>{{ posts.category_name }}</h1>
+        <h2>{{ posts.category_name }}</h2>
         <p>
           {{ posts.category_description }}
         </p>
@@ -97,21 +100,21 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
-  // async asyncData({ params, $axios, error, query = 1 }) {
-  //   try {
-  //     const posts = await $axios.$get(
-  //       `category/${params.category}?page=${query.page}`
-  //     )
-  //     return { posts }
-  //   } catch (e) {
-  //     error({ statusCode: 404, message: 'Post not found' })
-  //   }
-  // },
-  async fetch() {
-    let page = this.$route.query.page ? this.$route.query.page : 1
-    this.posts = await this.$axios.$get(
-      `category/${this.$route.params.category}?page=${page}`
-    )
+  async asyncData({ params, $axios, error, query = 1 }) {
+    try {
+      const posts = await $axios.$get(
+        `category/${params.category}?page=${query.page}`
+      )
+      return { posts }
+    } catch (e) {
+      error({ statusCode: 404, message: 'Post not found' })
+    }
   },
+  // async fetch() {
+  //   let page = this.$route.query.page ? this.$route.query.page : 1
+  //   this.posts = await this.$axios.$get(
+  //     `category/${this.$route.params.category}?page=${page}`
+  //   )
+  // },
 }
 </script>

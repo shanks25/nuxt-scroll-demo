@@ -662,13 +662,6 @@ i.fab.fah.fa-lg.fa-whatsapp {
     } 
  
 }
-@media (max-height: 576px){
- 
-    .article-content .image-post.post-view img{
-        max-height: 540px;
-          object-fit: contain;
-    }
-}
 
 .page-enter-active,
 .page-leave-active {
