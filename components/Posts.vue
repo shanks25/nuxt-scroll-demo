@@ -87,13 +87,14 @@
                 <ShareNetwork
                   v-for="network in networks"
                   :network="network.network"
-                  v-on:click="crawl()"
+                  @click.prevent
                   :key="network.network"
                   :url="sharing.url"
                   :title="post.title"
                   :description="post.description"
                   class="social-share"
                   @open="open(network.network)"
+                  rel="nofollow"
                 >
                   <i :class="network.icon"></i>
                   <span>{{ network.name }}</span>
@@ -171,8 +172,6 @@ export default {
       }, 150)
     },
     async open(network = 'no network') {
-      this.activeShare = false
-
       try {
         await this.$axios.post('/social-shares', {
           post_title: this.post.title,
@@ -181,7 +180,7 @@ export default {
       } catch (e) {}
     },
     crawl() {
-      return true
+      return false
     },
   },
 }

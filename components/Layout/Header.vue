@@ -3,7 +3,7 @@
     <div class="container">
       <button class="toggle-drawer-btn" @click="toggleDrawer()">☰</button>
       <nuxt-link :to="{ name: 'index' }" class="navbar-brand"
-        ><img src="../../assets/images/logo.webp"
+        ><img src="../../assets/images/logo.webp" alt="DDmemes"
       /></nuxt-link>
       <button
         class="navbar-toggler"
