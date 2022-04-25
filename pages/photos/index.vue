@@ -3,6 +3,8 @@
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
+          <Back v-if="!$fetchState.pending" />
+
           <pagination
             :data="posts"
             @pagination-change-page="getResults"
@@ -29,11 +31,6 @@ export default {
           hid: 'description',
           name: 'description',
           content: 'All pages',
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: 'itachi category wise posts',
         },
       ],
     }

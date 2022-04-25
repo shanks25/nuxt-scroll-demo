@@ -12,9 +12,8 @@
 
 <script>
 export default {
-  // scrollToTop: true,
   mounted() {
-    window.scrollTo({ top: 0 })
+    // window.scrollTo({ top: 0 })
   },
   data() {
     return {
@@ -33,7 +32,6 @@ export default {
             ? this.post.data.ocr
             : this.post.data.title,
         },
-        { hid: 'keywords', name: 'keywords', content: 'itachi single post' },
       ],
     }
   },

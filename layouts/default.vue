@@ -21,7 +21,7 @@
 <script>
 export default {
   head: {
-    title: 'DD: The Biggest Meme Library',
+    title: 'The Greatest Memes of All Time',
     titleTemplate: '%s | DD memes', // it will be everywhere %s will be replaced by the page title
 
     meta: [

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <div class="container">
-      <button class="toggle-drawer-btn" onclick="toggleDrawer()">☰</button>
+      <button class="toggle-drawer-btn" @click="toggleDrawer()">☰</button>
       <nuxt-link :to="{ name: 'index' }" class="navbar-brand"
         ><img src="../../assets/images/logo.webp"
       /></nuxt-link>
@@ -34,6 +34,22 @@
               >Contact us
             </nuxt-link>
           </li>
+          <li class="nav-item">
+            <nuxt-link
+              :to="{ name: 'privacy-policy' }"
+              class="nav-link active"
+              aria-current="page"
+              >Privacy policy
+            </nuxt-link>
+          </li>
+          <li class="nav-item">
+            <nuxt-link
+              :to="{ name: 'about-us' }"
+              class="nav-link active"
+              aria-current="page"
+              >About us
+            </nuxt-link>
+          </li>
         </ul>
         <!-- <form class="d-flex">
           <input
@@ -50,5 +66,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    toggleDrawer() {
+      var x = document.getElementById('cm-drawer')
+      if (x.style.width === '0px') {
+        document.getElementById('cm-drawer').style.width = '240px'
+        document.getElementById('cm-main').style.marginLeft = '240px'
+      } else {
+        document.getElementById('cm-drawer').style.width = '0px'
+        document.getElementById('cm-main').style.marginLeft = '0px'
+      }
+    },
+  },
+}
 </script>

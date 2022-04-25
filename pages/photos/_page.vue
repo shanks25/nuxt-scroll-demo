@@ -3,14 +3,16 @@
     <FeaturedTags />
     <template>
       <Loader v-if="$fetchState.pending" />
+      <Back v-else />
     </template>
 
     <pagination
-     class="list-page-pagination"
+      class="list-page-pagination"
       :data="posts"
       @pagination-change-page="getResults"
       :limit="6"
     ></pagination>
+
     <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
     <pagination
       class="list-page-pagination"
@@ -22,9 +24,12 @@
 </template>
 
 <script>
-import { postUrl } from '@/helpers'
-
 export default {
+  head() {
+    return {
+      title: 'Memes',
+    }
+  },
   data() {
     return {
       posts: {},

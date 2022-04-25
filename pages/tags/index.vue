@@ -3,16 +3,16 @@
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
-           <div class="tags_top">
-            <Back />
+          <div class="tags_top">
+            <Back v-if="!$fetchState.pending" />
             <pagination
               :data="tags"
               @pagination-change-page="getResults"
             ></pagination>
-             <ul class="tags_bx">
+            <ul class="tags_bx">
               <Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" />
-              </ul>
-            </div>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -42,14 +42,13 @@ export default {
 
   head() {
     return {
-      title: this.tags.keta,
+      title: 'All Tags',
       meta: [
         {
           hid: 'description',
           name: 'description',
           content: this.tags.keta,
         },
-        { hid: 'keywords', name: 'keywords', content: 'itachi all tags' },
       ],
     }
   },

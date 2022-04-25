@@ -33,6 +33,7 @@
         <h4>Section</h4>
         <ul>
           <Section
+            keep-alive
             v-for="(category, index) in categories.data"
             :key="index"
             :category="category"

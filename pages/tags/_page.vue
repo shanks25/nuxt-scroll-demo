@@ -3,7 +3,7 @@
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
-          <Back />
+          <Back v-if="!$fetchState.pending" />
           <pagination
             class="list-page-pagination"
             :data="tags"
@@ -24,6 +24,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: 'Meme Tags',
+    }
+  },
   data() {
     return {
       tags: {},

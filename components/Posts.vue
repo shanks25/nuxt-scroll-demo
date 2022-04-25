@@ -75,10 +75,15 @@
                 type="button"
                 class="dropbtn dropdown-toggle"
                 data-bs-toggle="dropdown"
+                @focus="handleShareFocus"
+                @focusout="handleShareFocusOut"
               >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
               </button>
-              <div class="dropdown-content dropdown-menu">
+              <div
+                class="dropdown-content dropdown-menu"
+                :class="[activeShare ? ['show', 'open-social-share'] : '']"
+              >
                 <ShareNetwork
                   v-for="network in networks"
                   :network="network.network"
@@ -109,6 +114,7 @@ export default {
   },
   data() {
     return {
+      activeShare: false,
       sharing: {
         url: process.env.NUXT_SERVER_BASE_URL + '/posts/' + this.post.slug,
         title: this.post.title,
@@ -155,8 +161,18 @@ export default {
     }
   },
   methods: {
+    handleShareFocus() {
+      this.activeShare = true
+    },
+    handleShareFocusOut() {
+      let self = this
+      setTimeout(() => {
+        this.activeShare = false
+      }, 150)
+    },
     async open(network = 'no network') {
-      // console.log(network)
+      this.activeShare = false
+
       try {
         await this.$axios.post('/social-shares', {
           post_title: this.post.title,

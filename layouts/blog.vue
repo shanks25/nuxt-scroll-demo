@@ -24,8 +24,6 @@ export default {
         name: 'description',
         content: 'DD Memes The Meme Libray',
       },
-      { hid: 'keywords', name: 'keywords', content: 'itachi bitch' },
-      { 'http-equiv': 'http-equiv', content: 'text/html; charset=UTF-8' },
     ],
   },
 }

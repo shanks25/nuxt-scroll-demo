@@ -1,6 +1,7 @@
 <template>
   <div>
     <FeaturedTags />
+
     <!-- :class="partialPagination" -->
     <pagination
       class="list-page-pagination"
@@ -10,6 +11,22 @@
     ></pagination>
     <Loader v-if="loader" />
     <div v-else>
+      <!-- <link
+        rel="next"
+        v-if="posts.links.next"
+        :href="`https://ddmemes.com?page=${posts.meta.current_page + 1}`"
+      />
+      <link
+        rel="prev"
+        v-if="posts.links.prev"
+        :href="`https://ddmemes.com?page=${posts.meta.current_page - 1}`"
+      /> -->
+
+      <SocialHead
+        title="The most famous internet memes of all time"
+        description="you guys will love my meme collection"
+        image="/mainlogo.webp"
+      />
       <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
     </div>
 
@@ -32,9 +49,6 @@ export default {
     }
   },
 
-  mounted() {
-    // console.log()
-  },
   methods: {
     getResults(page = 1, broswerBack = false) {
       if (this.$route.query.page != page) {
@@ -71,7 +85,41 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    nextPage() {
+      return this.$route.query.page + 1
+    },
+    paginationLinks() {
+      let nextPage = null
+      let previousPage = null
+
+      if (this.posts.links && this.posts.links.next) {
+        nextPage = this.posts.meta.current_page + 1
+        nextPage = `https://ddmemes.com?page=${nextPage}`
+      }
+
+      if (this.posts.links && this.posts.links.prev) {
+        previousPage = this.posts.meta.current_page - 1
+        previousPage = `https://ddmemes.com?page=${previousPage}`
+      }
+      const nextUrl = {
+        rel: 'next',
+        href: nextPage,
+      }
+      const previousUrl = {
+        rel: 'prev',
+        href: previousPage,
+      }
+
+      return [nextUrl, previousUrl].filter(({ href }) => !!href)
+    },
+  },
+
+  head() {
+    return {
+      link: this.paginationLinks,
+    }
+  },
   /*   async fetch() {
     let page = this.$route.query.page
     if (!page) {

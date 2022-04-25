@@ -7,7 +7,6 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'ddMemes',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -28,9 +27,16 @@ export default {
 
     script: [
       {
-        src: '/main.js',
+        // src: '/main.js',
+        // src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
       },
     ],
+  },
+
+  pwa: {
+    icon: {
+      fileName: 'icon.png',
+    },
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -86,14 +92,12 @@ export default {
     },
   },
 
-  // router: {
-  //   scrollBehavior: function (to, from, savedPosition) {
-  //     return { x: 0, y: 0 }
-  //   },
-  // },
-  googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
+  router: {
+    scrollBehavior: function (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+    },
   },
+
   /*   sitemap: {
     routes: async () => {
       let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')

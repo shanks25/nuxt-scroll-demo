@@ -13,13 +13,14 @@
     ></pagination>
 
     <Loader v-if="loader" />
-
-    <Posts
-      v-for="(post, index) in posts.data"
-      :key="index"
-      :post="post"
-      v-else
-    />
+    <template v-else>
+      <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+      <SocialHead
+        :title="posts.keta"
+        :description="posts.desc"
+        :image="posts.data[0].image"
+      />
+    </template>
 
     <pagination
       :data="posts"
@@ -48,7 +49,6 @@ export default {
           name: 'description',
           content: this.posts.keta,
         },
-        { hid: 'keywords', name: 'keywords', content: 'itachi single tag' },
       ],
     }
   },
