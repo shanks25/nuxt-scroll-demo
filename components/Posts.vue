@@ -31,9 +31,7 @@
               {{ post.categories.name }}
             </NuxtLink>
           </p>
-          <div class="save-post">
-            <a href="#."><i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
-          </div>
+
           <h1 class="post-title">
             <NuxtLink :to="{ name: 'posts-slug', params: { slug: post.slug } }">
               {{ post.title }}
@@ -77,6 +75,7 @@
                 data-bs-toggle="dropdown"
                 @focus="handleShareFocus"
                 @focusout="handleShareFocusOut"
+                aria-label="social share"
               >
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
               </button>
@@ -168,7 +167,7 @@ export default {
       let self = this
       setTimeout(() => {
         this.activeShare = false
-      }, 150)
+      }, 100)
     },
     async open(network = 'no network') {
       try {
