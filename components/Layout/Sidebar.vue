@@ -2,7 +2,7 @@
   <div id="cm-drawer" class="cm-sidebar hide-scrollbar">
     <div class="cm-drawer-container">
       <section class="dr-list">
-        <h4>Pages</h4>
+        <!-- <h4>Pages</h4> -->
         <ul>
           <li :class="{ 'active-lt': $route.name == 'index' }">
             <span class="dLeft">
