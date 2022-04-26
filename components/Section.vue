@@ -1,7 +1,6 @@
 <template>
   <li>
     <NuxtLink
-      @click.native="checkMobileView()"
       :to="{
         name: 'sections-category',
         params: { category: category.slug },
@@ -25,18 +24,7 @@
 <script>
 export default {
   props: ['category'],
-  methods: {
-    checkMobileView() {
-      if (
-        /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(
-          navigator.userAgent
-        ) ||
-        screen.availWidth < 480
-      ) {
-        document.getElementById('cm-drawer').style.setProperty('width', '0px')
-      }
-    },
-  },
+  methods: {},
   mounted() {
     /*     document
       .getElementById('category')

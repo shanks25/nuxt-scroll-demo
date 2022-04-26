@@ -4,7 +4,8 @@
       <div class="post-actions">
         <div class="act-left">
           <div class="tags_top">
-            <Back v-if="!$fetchState.pending" />
+            <template v-if="$fetchState.pending"> loading... </template>
+            <Back v-else />
             <pagination
               :data="tags"
               @pagination-change-page="getResults"

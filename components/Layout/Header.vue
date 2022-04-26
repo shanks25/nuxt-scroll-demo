@@ -2,7 +2,10 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
     <div class="container">
       <button class="toggle-drawer-btn" @click="toggleDrawer()">☰</button>
-      <nuxt-link :to="{ name: 'index' }" class="navbar-brand"
+      <nuxt-link
+        :to="{ name: 'index' }"
+        @click.native="hideDrawer()"
+        class="navbar-brand"
         ><img src="../../assets/images/logo.webp" alt="DDmemes"
       /></nuxt-link>
       <button
@@ -28,6 +31,7 @@
           </li>
           <li class="nav-item">
             <nuxt-link
+              @click.native="hideDrawer()"
               :to="{ name: 'contactus' }"
               class="nav-link active"
               aria-current="page"
@@ -36,6 +40,7 @@
           </li>
           <li class="nav-item">
             <nuxt-link
+              @click.native="hideDrawer()"
               :to="{ name: 'privacy-policy' }"
               class="nav-link active"
               aria-current="page"
@@ -44,6 +49,7 @@
           </li>
           <li class="nav-item">
             <nuxt-link
+              @click.native="hideDrawer()"
               :to="{ name: 'about-us' }"
               class="nav-link active"
               aria-current="page"
@@ -69,15 +75,24 @@
 export default {
   methods: {
     toggleDrawer() {
-      var x = document.getElementById('cm-drawer')
-      if (x.style.width === '0px') {
+      let x = document.getElementById('cm-drawer')
+      if (x.style.width === '240px') {
+        document.getElementById('cm-drawer').style.width = '0px'
+        document.getElementById('cm-main').style.marginLeft = '0px'
+      } else {
         document.getElementById('cm-drawer').style.width = '240px'
         document.getElementById('cm-main').style.marginLeft = '240px'
-      } else {
+      }
+    },
+    hideDrawer() {
+      let x = document.getElementById('cm-drawer')
+
+      if (screen.availWidth < 480) {
         document.getElementById('cm-drawer').style.width = '0px'
         document.getElementById('cm-main').style.marginLeft = '0px'
       }
     },
   },
+  mounted() {},
 }
 </script>

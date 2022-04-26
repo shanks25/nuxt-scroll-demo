@@ -25,7 +25,7 @@
       <SocialHead
         title="The most famous internet memes of all time"
         description="you guys will love my meme collection"
-        image="/mainlogo.webp"
+        :image="featuredImage"
       />
       <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
     </div>
@@ -86,6 +86,9 @@ export default {
   },
 
   computed: {
+    featuredImage() {
+      return process.env.FEATURED_IMAGE
+    },
     nextPage() {
       return this.$route.query.page + 1
     },

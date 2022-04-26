@@ -12,11 +12,9 @@
 
 <script>
 export default {
-  mounted() {
-    // window.scrollTo({ top: 0 })
-  },
   data() {
     return {
+      // loaded: false,
       post: {},
     }
   },
@@ -35,7 +33,9 @@ export default {
       ],
     }
   },
-
+  mounted() {
+    // this.loaded = true
+  },
   async asyncData({ params, $axios, error }) {
     try {
       const post = await $axios.$get(`posts/${params.slug}`)

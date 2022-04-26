@@ -94,7 +94,6 @@
                   :description="post.description"
                   class="social-share"
                   @open="open(network.network)"
-                  rel="nofollow"
                 >
                   <i :class="network.icon"></i>
                   <span>{{ network.name }}</span>

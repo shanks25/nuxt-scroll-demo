@@ -27,8 +27,8 @@ export default {
 
     script: [
       {
-        // src: '/main.js',
-        // src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
+        src: '/main.js',
+        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
       },
     ],
   },
@@ -92,11 +92,11 @@ export default {
     },
   },
 
-  router: {
-    scrollBehavior: function (to, from, savedPosition) {
-      return { x: 0, y: 0 }
-    },
-  },
+  // router: {
+  //   scrollBehavior: function (to, from, savedPosition) {
+  //     return { x: 0, y: 0 }
+  //   },
+  // },
 
   /*   sitemap: {
     routes: async () => {

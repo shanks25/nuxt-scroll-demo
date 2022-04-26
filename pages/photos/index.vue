@@ -3,7 +3,8 @@
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
-          <Back v-if="!$fetchState.pending" />
+          <template v-if="$fetchState.pending"> loading... </template>
+          <Back v-else />
 
           <pagination
             :data="posts"

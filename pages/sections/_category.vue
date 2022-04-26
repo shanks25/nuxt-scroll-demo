@@ -30,7 +30,7 @@
       :limit="6"
     ></pagination>
     <Loader v-if="loader" />
-    <template>
+    <template v-else>
       <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
       <SocialHead
         :title="posts.keta"

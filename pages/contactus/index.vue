@@ -86,7 +86,6 @@
 </template>
 	<script>
 export default {
-  layout: 'blog',
   head() {
     return {
       title: 'Contact Us',
