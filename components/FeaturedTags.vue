@@ -1,15 +1,17 @@
 <template>
-  <div class="tag-container">
-    <ul class="tag-list">
-      <li><a href="#." class="c-tag">Weekly Highlights</a></li>
-      <li><a href="#." class="c-tag">Samsung</a></li>
-      <li><a href="#." class="c-tag">DodgeCoin</a></li>
-      <li><a href="#." class="c-tag">Weekly Highlights</a></li>
-      <li><a href="#." class="c-tag">Samsung</a></li>
-      <li><a href="#." class="c-tag">DodgeCoin</a></li>
-      <li><a href="#." class="c-tag">Weekly Highlights</a></li>
-      <li><a href="#." class="c-tag">Samsung</a></li>
-      <li><a href="#." class="c-tag">DodgeCoin</a></li>
-    </ul>
-  </div>
+  <li>
+    <NuxtLink
+      class="c-tag"
+      :to="{ name: 'tag-tag', params: { tag: tag.slug } }"
+    >
+      {{ tag.name }}
+    </NuxtLink>
+  </li>
 </template>
+
+
+<script>
+export default {
+  props: ['tag'],
+}
+</script>

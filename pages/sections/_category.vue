@@ -21,7 +21,11 @@
         </p>
       </div>
     </div>
-    <FeaturedTags />
+    <!--  <div class="tag-container">
+      <ul class="tag-list">
+        <FeaturedTags v-for="tag in tags" :key="tag.id" :tag="tag" />
+      </ul>
+    </div> -->
 
     <pagination
       class="list-page-pagination"
@@ -69,6 +73,7 @@ export default {
       ],
     }
   },
+  mounted() {},
 
   methods: {
     getResults(page = 1) {
@@ -103,6 +108,7 @@ export default {
       )
       return { posts }
     } catch (e) {
+      console.log(e)
       error({ statusCode: 404, message: 'Post not found' })
     }
   },

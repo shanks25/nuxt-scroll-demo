@@ -1,8 +1,7 @@
 <template>
   <div>
-    <FeaturedTags />
+    <!-- <FeaturedTags /> -->
 
-    <!-- :class="partialPagination" -->
     <pagination
       class="list-page-pagination"
       :data="posts"
@@ -11,17 +10,6 @@
     ></pagination>
     <Loader v-if="loader" />
     <div v-else>
-      <!-- <link
-        rel="next"
-        v-if="posts.links.next"
-        :href="`https://ddmemes.com?page=${posts.meta.current_page + 1}`"
-      />
-      <link
-        rel="prev"
-        v-if="posts.links.prev"
-        :href="`https://ddmemes.com?page=${posts.meta.current_page - 1}`"
-      /> -->
-
       <SocialHead
         title="The most famous internet memes of all time"
         description="you guys will love my meme collection"

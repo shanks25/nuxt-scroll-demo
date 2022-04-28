@@ -92,12 +92,6 @@ export default {
     },
   },
 
-  // router: {
-  //   scrollBehavior: function (to, from, savedPosition) {
-  //     return { x: 0, y: 0 }
-  //   },
-  // },
-
   /*   sitemap: {
     routes: async () => {
       let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')

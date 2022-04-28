@@ -12,6 +12,8 @@
 
 <script>
 export default {
+  // scrollToTop: false,
+
   head: {
     title: 'DD: The Biggest Meme Library',
     titleTemplate: '%s | DD memes', // it will be everywhere %s will be replaced by the page title
