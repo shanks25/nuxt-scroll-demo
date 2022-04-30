@@ -73,7 +73,9 @@ export default {
       ],
     }
   },
-  mounted() {},
+  mounted() {
+    console.log(1)
+  },
 
   methods: {
     getResults(page = 1) {
