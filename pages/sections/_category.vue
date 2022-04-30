@@ -109,7 +109,8 @@ export default {
       const [posts, tags] = await Promise.all([
         $axios.get(`category/${params.category}`),
         $axios.get(
-          'http://localhost:3000' + `/json/featuredTags/${params.category}.json`
+          process.env.NUXT_BASE_URL +
+            `/json/featuredTags/${params.category}.json`
         ),
       ])
       // const posts = await $axios.$get(`category/${params.category}?page=1`)
