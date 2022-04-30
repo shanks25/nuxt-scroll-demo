@@ -45,6 +45,13 @@ Vue.mixin({
       return process.env.NUXT_BASE_URL + `/json/categories/categories.json`
     },
 
+    featuredTagsUrl(category) {
+      if (this.laravelMode || this.localJsonNotAllowed('featuredTags')) {
+        return baseUrl() + `featured/${category}`
+      }
+      return process.env.NUXT_BASE_URL + `/json/featuredTags/${category}.json`
+    },
+
     photoUrl() {
       if (this.laravelMode || this.localJsonNotAllowed('photos')) {
         return this.baseUrl + `photos`

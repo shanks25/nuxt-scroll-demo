@@ -19,6 +19,13 @@ let categoryUrl = () => {
   return process.env.NUXT_BASE_URL + `json/categories/categories.json`
 }
 
+let featuredTagsUrl = (category) => {
+  if (laravelMode()) {
+    return baseUrl() + `featured/${category}`
+  }
+  return process.env.NUXT_BASE_URL + `json/featuredTags/${category}.json`
+}
+
 function baseUrl() {
   if (process.env.APP_ENV == 'local') {
     return process.env.LOCAL_BASE_URL
@@ -33,4 +40,4 @@ function laravelMode() {
   return 0 // this will call .json files nuxt local static folder
 }
 
-export { postUrl, categoryUrl, tagUrl }
+export { postUrl, categoryUrl, tagUrl, featuredTagsUrl }

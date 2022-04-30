@@ -21,11 +21,11 @@
         </p>
       </div>
     </div>
-    <!--  <div class="tag-container">
+    <div class="tag-container">
       <ul class="tag-list">
         <FeaturedTags v-for="tag in tags" :key="tag.id" :tag="tag" />
       </ul>
-    </div> -->
+    </div>
 
     <pagination
       class="list-page-pagination"
@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       posts: {},
+      tags: [],
       loader: false,
     }
   },
@@ -74,7 +75,7 @@ export default {
     }
   },
   mounted() {
-    console.log(1)
+    console.log(this.posts)
   },
 
   methods: {
@@ -103,22 +104,33 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
-  async asyncData({ params, $axios, error, query = 1 }) {
+  async asyncData({ params, $axios, error }) {
     try {
-      const posts = await $axios.$get(
-        `category/${params.category}?page=${query.page}`
-      )
-      return { posts }
+      const [posts, tags] = await Promise.all([
+        $axios.get(`category/${params.category}`),
+        $axios.get(
+          'http://localhost:3000' + `/json/featuredTags/${params.category}.json`
+        ),
+      ])
+      // const posts = await $axios.$get(`category/${params.category}?page=1`)
+      return {
+        posts: posts.data,
+        tags: tags.data.data,
+      }
     } catch (e) {
       console.log(e)
       error({ statusCode: 404, message: 'Post not found' })
     }
   },
-  // async fetch() {
-  //   let page = this.$route.query.page ? this.$route.query.page : 1
-  //   this.posts = await this.$axios.$get(
-  //     `category/${this.$route.params.category}?page=${page}`
-  //   )
-  // },
+  /*   async fetch() {
+    let apiUrl = this.featuredTagsUrl(this.$route.params.category)
+    console.log(apiUrl)
+    this.$axios
+      .$get(apiUrl)
+      .then((response) => {
+        this.tags = response.data
+      })
+      .catch(() => {})
+  }, */
 }
 </script>
