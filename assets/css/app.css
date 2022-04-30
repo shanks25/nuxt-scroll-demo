@@ -26,6 +26,7 @@ body {
     color: rgb(15, 20, 25);
 	-webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
+    overflow-y: scroll;
 }
 a {
     color: var(--link-color);
@@ -622,9 +623,10 @@ i.fab.fah.fa-lg.fa-whatsapp {
 }
 
 
-@media (max-width: 1400px) { 
-    .article-content .image-post.post-view img {max-height: 400px;  }
-    
+@media (max-width: 1400px) and (min-width: 991px){ 
+    .article-content .image-post.post-view img {
+        max-height: 400px; 
+     }    
     .fullHeight{
         max-height: 800px !important; 
     }
@@ -675,6 +677,7 @@ i.fab.fah.fa-lg.fa-whatsapp {
         display: inline-block;
         margin-bottom: 6px;
     }
+    
 }
 @media (max-width: 576px){
     .ads-container-parent, .posts-container-parent {
