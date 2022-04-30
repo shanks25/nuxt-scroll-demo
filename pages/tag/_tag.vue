@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Back />
+     <h1 class="tag_head">{{ posts.desc }} <Back /></h1>
+   
     <!-- <Loader v-if="$fetchState.pending" /> -->
-    <h1>{{ posts.desc }}</h1>
-
     <br />
     <pagination
       :data="posts"

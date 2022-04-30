@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div class="row">
     <div class="col-sm-7 nopadd-rth">
       <div class="contact-from-wrap">
@@ -69,7 +69,7 @@
           <span>Email Address</span>
           <a href="mailto:info@shirsatsports.com">info@celestialmemes.com</a>
         </address>
-        <address>
+        <!-- <address>
           <i class="fa fa-phone"></i>
           <span>Phone Number</span>
           <a href="tel:+9595699656">9595699656</a>
@@ -79,12 +79,12 @@
           <span>Address</span>
           22/704 Princes Highway,<br />
           Kogarah, NSW 2217
-        </address>
+        </address> -->
       </div>
     </div>
   </div>
 </template>
-	<script>
+<script>
 export default {
   head() {
     return {
@@ -108,6 +108,3 @@ export default {
   },
 }
 </script>
- 
-	
- 

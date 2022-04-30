@@ -388,7 +388,7 @@ article header .post-section .thumb-icon picture img{border-radius: 3px;}
 .dropdown {  position: relative; display: inline-block; }
 .dropdown-content { display: none; position: absolute; background-color: #fff; min-width: 160px; overflow: auto; box-shadow: none; right: 0; z-index: 1; border: 1px solid #ced4da; border-radius: 4px; top: 37px; }
 .share-dropdown .dropdown-toggle::after{display:none;}
-.dropdown-content a { color: black; padding: 6px 12px; text-decoration: none; display: block; font-size: 14px; font-weight:normal; }
+.dropdown-content a { color: black; padding: 6px 14px; text-decoration: none; display: block; font-size: 14px; font-weight:normal; }
 .dropdown a:hover {background-color: rgba(0,0,0,.06);}
 .show {display: block;}
 .share-dropdown .dropdown-content a.twitt i{color:#26a0ef;}
@@ -495,7 +495,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
 }
 .contact-info-wrap {
     font-size: 15px;
-    padding: 100px 40px;
+    padding: 60px 10px 225px;
     background: #686868 url("~/assets/images/contbg.png");
     background-size: cover;
     background-position: center top;
@@ -503,7 +503,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
 }
 .contact-info-wrap address {
     color: #fff;
-    padding-left: 65px;
+    padding-left: 55px;
     margin-bottom: 50px;
     position: relative;
     font-size: 14px;
@@ -621,14 +621,21 @@ i.fab.fah.fa-lg.fa-whatsapp {
     font-size: 14px;
     padding: 3px 10px;
 }
+.tag_head{
+    font-size: 22px;
+}
+.tag_head .back_btn{float: right;}
+
+
+
 
 
 @media (max-width: 1400px) and (min-width: 991px){ 
     .article-content .image-post.post-view img {
-        max-height: 400px; 
+        max-height: 470px; 
      }    
     .fullHeight{
-        max-height: 800px !important; 
+        max-height: 600px !important; 
     }
 }
 
@@ -679,6 +686,7 @@ i.fab.fah.fa-lg.fa-whatsapp {
     }
     
 }
+
 @media (max-width: 576px){
     .ads-container-parent, .posts-container-parent {
         height: 100%;
@@ -697,4 +705,45 @@ i.fab.fah.fa-lg.fa-whatsapp {
 
 .social-share{
     color: white;
+}
+
+
+@media (max-width: 991px){
+    .contact-info-wrap address{
+        padding-left: 10px;
+    }
+    .contact-info-wrap address i{
+        position: relative;
+    }
+    .col-sm-9 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .contact-info-wrap {
+        margin-top: 15px;
+        padding: 30px 10px 30px;
+    }
+    .contact-info-wrap address{margin-bottom: 0;}
+    .nopadd-rth {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .open-social-share{left: auto; right: -8px;}
+    .post-title{font-size: 20px;}
+    body{overflow-y: auto;}
+}
+
+@media (max-width: 580px){
+    .addrssect {
+        padding: 0;
+    }
+}
+
+@media (max-width: 767px){
+    .profile-right{
+        width: auto; 
+    }
+    .back_btn{
+        float: right;
+    }
 }
