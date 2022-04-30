@@ -32,9 +32,10 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'DD Memes The Meme Libray',
+        content:
+          'Explore DDmemes for the most popular memes, anime posts, weebs memes, relationship memes, and awesome memes on the internet!',
       },
-      { hid: 'keywords', name: 'keywords', content: 'itachi bitch' },
+      // { hid: 'keywords', name: 'keywords', content: 'itachi bitch' },
       { 'http-equiv': 'http-equiv', content: 'text/html; charset=UTF-8' },
     ],
   },

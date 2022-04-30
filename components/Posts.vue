@@ -60,7 +60,7 @@
           <div class="act-left">
             <ul class="btn-vote left">
               <li>
-                <a class="up" href="#."
+                <a class="up" href="#" @click.prevent
                   ><i class="bi bi-arrow-up"></i>{{ post.post_upvotes }}</a
                 >
               </li>

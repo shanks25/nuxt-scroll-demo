@@ -62,18 +62,31 @@ export default {
     }
   },
 
-  head() {
-    return {
-      title: this.posts.keta,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.posts.keta,
-        },
-      ],
+  paginationLinks() {
+    let nextPage = null
+    let previousPage = null
+
+    if (this.posts.links && this.posts.links.next) {
+      nextPage = this.posts.meta.current_page + 1
+      nextPage = `https://ddmemes.com/sections/anime?page=${nextPage}`
     }
+
+    if (this.posts.links && this.posts.links.prev) {
+      previousPage = this.posts.meta.current_page - 1
+      previousPage = `https://ddmemes.com/sections/anime?page=${previousPage}`
+    }
+    const nextUrl = {
+      rel: 'next',
+      href: nextPage,
+    }
+    const previousUrl = {
+      rel: 'prev',
+      href: previousPage,
+    }
+
+    return [nextUrl, previousUrl].filter(({ href }) => !!href)
   },
+
   mounted() {
     console.log(this.posts)
   },
@@ -104,6 +117,16 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
+  head() {
+    return {
+      title: this.posts.keta,
+      meta: [
+        {
+          description: this.posts.desc,
+        },
+      ],
+    }
+  },
   async asyncData({ params, $axios, error, query }) {
     try {
       if (!query.page) {
@@ -116,16 +139,16 @@ export default {
             `/json/featuredTags/${params.category}.json`
         ),
       ])
-      // const posts = await $axios.$get(`category/${params.category}?page=1`)
+
       return {
         posts: posts.data,
         tags: tags.data.data,
       }
     } catch (e) {
-      console.log(e)
       error({ statusCode: 404, message: 'Post not found' })
     }
   },
+
   /*   async fetch() {
     let apiUrl = this.featuredTagsUrl(this.$route.params.category)
     console.log(apiUrl)

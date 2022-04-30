@@ -27,7 +27,13 @@
 export default {
   head() {
     return {
-      title: 'Meme Tags',
+      title: 'Meme Tags-' + this.$route.params.page,
+      link: this.paginationLinks,
+      meta: [
+        {
+          description: 'Explore All tags available on DDmemes',
+        },
+      ],
     }
   },
   data() {
@@ -35,7 +41,32 @@ export default {
       tags: {},
     }
   },
+  computed: {
+    paginationLinks() {
+      let nextPage = null
+      let previousPage = null
 
+      if (this.tags.links && this.tags.links.next) {
+        nextPage = this.tags.meta.current_page + 1
+        nextPage = `https://ddmemes.com/tags?page=${nextPage}`
+      }
+
+      if (this.tags.links && this.tags.links.prev) {
+        previousPage = this.tags.meta.current_page - 1
+        previousPage = `https://ddmemes.com/tags?page=${previousPage}`
+      }
+      const nextUrl = {
+        rel: 'next',
+        href: nextPage,
+      }
+      const previousUrl = {
+        rel: 'prev',
+        href: previousPage,
+      }
+
+      return [nextUrl, previousUrl].filter(({ href }) => !!href)
+    },
+  },
   methods: {
     getResults(page = 1) {
       this.$router.push({

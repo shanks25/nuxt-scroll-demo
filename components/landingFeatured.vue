@@ -74,6 +74,17 @@
           Harry Potter
         </NuxtLink>
       </li>
+      <li>
+        <NuxtLink
+          class="c-tag"
+          :to="{
+            name: 'sections-category',
+            params: { category: 'the-big-sad' },
+          }"
+        >
+          The big sad
+        </NuxtLink>
+      </li>
     </ul>
   </div>
 </template>

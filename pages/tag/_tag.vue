@@ -1,7 +1,7 @@
 <template>
   <div>
-     <h1 class="tag_head">{{ posts.desc }} <Back /></h1>
-   
+    <h1 class="tag_head">{{ posts.desc }} <Back /></h1>
+
     <!-- <Loader v-if="$fetchState.pending" /> -->
     <br />
     <pagination
@@ -44,9 +44,7 @@ export default {
       title: this.posts.keta,
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: this.posts.keta,
+          description: this.posts.desc,
         },
       ],
     }

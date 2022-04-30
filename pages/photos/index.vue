@@ -29,9 +29,7 @@ export default {
       title: 'All pages',
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'All pages',
+          description: 'All pages available on DDmemes',
         },
       ],
     }
