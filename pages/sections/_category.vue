@@ -104,10 +104,13 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
-  async asyncData({ params, $axios, error }) {
+  async asyncData({ params, $axios, error, query }) {
     try {
+      if (!query.page) {
+        query.page = 1
+      }
       const [posts, tags] = await Promise.all([
-        $axios.get(`category/${params.category}`),
+        $axios.get(`category/${params.category}?page=${query.page}`),
         $axios.get(
           process.env.NUXT_BASE_URL +
             `/json/featuredTags/${params.category}.json`

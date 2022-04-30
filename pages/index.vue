@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <FeaturedTags /> -->
+    <landingFeatured />
 
     <pagination
       class="list-page-pagination"
@@ -12,7 +12,7 @@
     <div v-else>
       <SocialHead
         title="The most famous internet memes of all time"
-        description="you guys will love my meme collection"
+        description="The sorted meme library"
         :image="featuredImage"
       />
       <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />

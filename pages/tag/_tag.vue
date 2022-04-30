@@ -81,7 +81,7 @@ export default {
       this.loadPosts(to.query.page)
     },
   },
-  async asyncData({ params, $axios, error, query = 1 }) {
+  async asyncData({ params, $axios, error, query }) {
     try {
       if (!query.page) {
         query.page = 1
