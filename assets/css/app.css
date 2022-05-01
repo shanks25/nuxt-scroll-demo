@@ -529,6 +529,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
 .contact-info-wrap address a {
     color: #fff;
     display: block;
+    text-decoration: underline;
 }
 .contact-form .form-group .form-control {
     border-radius: 3px;
@@ -565,7 +566,7 @@ ul.child-comment-wrapper { padding: 0 0 0 42px; margin: 0; list-style: none; }
     text-align: center;
 }
 .back_btn {
-    float: left;
+    float: right;
     margin-bottom: 5px;
 }
 .back_btn .btn.btn-primary {
@@ -625,7 +626,9 @@ i.fab.fah.fa-lg.fa-whatsapp {
     font-size: 22px;
 }
 .tag_head .back_btn{float: right;}
-
+.section_page .profile-right{
+    width: 70%;
+}
 
 
 
@@ -745,5 +748,8 @@ i.fab.fah.fa-lg.fa-whatsapp {
     }
     .back_btn{
         float: right;
+    }
+    .section_page .profile-right {
+        width: auto;
     }
 }

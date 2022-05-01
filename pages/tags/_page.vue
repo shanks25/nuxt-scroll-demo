@@ -3,6 +3,7 @@
     <div class="post-meta">
       <div class="post-actions">
         <div class="act-left">
+          <div class="tags_top">
           <template v-if="$fetchState.pending"> loading... </template>
           <Back v-else />
           <pagination
@@ -17,6 +18,7 @@
             @pagination-change-page="getResults"
             :limit="6"
           ></pagination>
+        </div>
         </div>
       </div>
     </div>
