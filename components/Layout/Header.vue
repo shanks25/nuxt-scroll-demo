@@ -9,6 +9,7 @@
         ><img src="../../assets/images/logo.webp" alt="DDmemes"
       /></nuxt-link>
       <button
+        @click="togglePagesDrawer()"
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
@@ -26,6 +27,7 @@
               :to="{ name: 'index' }"
               class="nav-link active"
               aria-current="page"
+              @click.native="hideDrawer()"
               >Home
             </nuxt-link>
           </li>
@@ -84,12 +86,19 @@ export default {
         document.getElementById('cm-main').style.marginLeft = '240px'
       }
     },
+    togglePagesDrawer() {
+      var element = document.getElementById('navbarSupportedContent')
+      element.classList.toggle('show')
+    },
     hideDrawer() {
       let x = document.getElementById('cm-drawer')
 
       if (screen.availWidth < 480) {
         document.getElementById('cm-drawer').style.width = '0px'
         document.getElementById('cm-main').style.marginLeft = '0px'
+
+        var element = document.getElementById('navbarSupportedContent')
+        element.classList.remove('show')
       }
     },
   },

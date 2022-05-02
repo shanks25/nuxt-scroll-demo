@@ -36,6 +36,13 @@
 export default {
   head() {
     return {
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: 'https://ddmemes.com/about-us',
+        },
+      ],
       title: 'About Us',
     }
   },

@@ -42,12 +42,46 @@ export default {
   head() {
     return {
       title: this.posts.keta,
+      link: this.paginationLinks,
       meta: [
         {
-          description: this.posts.desc,
+          hid: 'description',
+          name: 'description',
+          content: this.posts.desc,
         },
       ],
     }
+  },
+  computed: {
+    paginationLinks() {
+      let nextPage = null
+      let previousPage = null
+      if (this.posts.links && this.posts.links.next) {
+        nextPage = this.posts.meta.current_page + 1
+        nextPage = `https://ddmemes.com/tag/${this.$route.params.tag}?page=${nextPage}`
+      }
+
+      if (this.posts.links && this.posts.links.prev) {
+        previousPage = this.posts.meta.current_page - 1
+        previousPage = `https://ddmemes.com/tag/${this.$route.params.tag}?page=${previousPage}`
+      }
+
+      const nextUrl = {
+        rel: 'next',
+        href: nextPage,
+      }
+      const previousUrl = {
+        rel: 'prev',
+        href: previousPage,
+      }
+
+      const canonical = {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: `https://ddmemes.com/tag/${this.$route.params.tag}`,
+      }
+      return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
+    },
   },
   methods: {
     getResults(page = 1) {
@@ -69,9 +103,6 @@ export default {
           this.loader = false
         })
     },
-  },
-  mounted() {
-    // console.log(this.$route)
   },
   watch: {
     $route(to, from) {

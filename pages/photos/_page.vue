@@ -76,6 +76,13 @@ export default {
     return {
       title: `Photos-${this.$route.params.page}`,
       link: this.paginationLinks,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'All pages available on DDmemes',
+        },
+      ],
     }
   },
 }

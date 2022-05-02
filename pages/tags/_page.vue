@@ -4,21 +4,21 @@
       <div class="post-actions">
         <div class="act-left">
           <div class="tags_top">
-          <template v-if="$fetchState.pending"> loading... </template>
-          <Back v-else />
-          <pagination
-            class="list-page-pagination"
-            :data="tags"
-            @pagination-change-page="getResults"
-          ></pagination>
-          <Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" />
-          <pagination
-            class="list-page-pagination"
-            :data="tags"
-            @pagination-change-page="getResults"
-            :limit="6"
-          ></pagination>
-        </div>
+            <template v-if="$fetchState.pending"> loading... </template>
+            <Back v-else />
+            <pagination
+              class="list-page-pagination"
+              :data="tags"
+              @pagination-change-page="getResults"
+            ></pagination>
+            <Tag v-for="(tag, index) in tags.data" :key="index" :tag="tag" />
+            <pagination
+              class="list-page-pagination"
+              :data="tags"
+              @pagination-change-page="getResults"
+              :limit="6"
+            ></pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +33,9 @@ export default {
       link: this.paginationLinks,
       meta: [
         {
-          description: 'Explore All tags available on DDmemes',
+          hid: 'description',
+          name: 'description',
+          content: 'Explore All tags available on DDmemes',
         },
       ],
     }

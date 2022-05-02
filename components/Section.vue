@@ -25,14 +25,5 @@
 export default {
   props: ['category'],
   methods: {},
-  mounted() {
-    /*     document
-      .getElementById('category')
-      .setAttribute(
-        'src',
-        this.post.categories.image ||
-          'https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp'
-      ) */
-  },
 }
 </script>

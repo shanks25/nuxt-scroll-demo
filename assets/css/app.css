@@ -376,7 +376,7 @@ article header .post-section .thumb-icon picture img{border-radius: 3px;}
 .post-meta .post-actions .act-left .btn-vote.left i.bi{margin-right: 10px;}
 .post-meta .post-actions .act-left .btn-vote.left li a:hover {background-color: rgba(0,0,0,.06);}
 .article-content .image-post.post-view picture{border-radius: 4px; background-color: #f4f4f4; height:560px;}
-.article-content .image-post.post-view img {max-height: 600px; object-fit: contain; }
+.article-content .image-post.post-view img {max-height: 660px; object-fit: contain; }
 .article-content .image-post.post-view video {height: 500px; object-fit: contain; }
 
 

@@ -193,8 +193,18 @@
 </template>
 	<script>
 export default {
+  mounted() {
+    console.log(this.$route)
+  },
   head() {
     return {
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: 'https://ddmemes.com/privacy-policy',
+        },
+      ],
       title: 'Privacy Policy',
     }
   },

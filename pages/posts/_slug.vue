@@ -26,9 +26,14 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.post.data.ocr
-            ? this.post.data.ocr
-            : this.post.data.title,
+          content: this.post.data.ocr,
+        },
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `https://ddmemes.com/posts/${this.$route.params.slug}`,
         },
       ],
     }

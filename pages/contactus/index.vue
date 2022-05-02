@@ -67,14 +67,19 @@
         <address>
           <i class="fa fa-envelope"></i>
           <span>Email Address</span>
-          <a href="mailto:info@shirsatsports.com">info@celestialmemes.com</a>
+          <a>info@ddmemes.com</a>
         </address>
-         <address>
-         <i class="fa-brands fa-facebook-f"></i>
-          <span>Facebook</span>
-          <a href="">Share on Facebook</a>
+        <address>
+          <a
+            href="https://www.facebook.com/evilgt"
+            style="text-decoration: none"
+            target="_blank"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
         </address>
-       <!-- <address>
+        <!-- <address>
           <i class="fa fa-map-marker"></i>
           <span>Address</span>
           22/704 Princes Highway,<br />
@@ -88,6 +93,13 @@
 export default {
   head() {
     return {
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: 'https://ddmemes.com/contactus',
+        },
+      ],
       title: 'Contact Us',
     }
   },

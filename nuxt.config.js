@@ -7,6 +7,9 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: {
+      lang: 'en',
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -15,6 +18,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favio.ico' },
+      { hid: 'canonical', rel: 'canonical', href: 'https://ddmemes.com' },
       {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css',
@@ -25,12 +29,12 @@ export default {
       },
     ],
 
-    script: [
-      {
-        src: '/main.js',
-        src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
-      },
-    ],
+    // script: [
+    //   {
+    //     src: '/main.js',
+    //     src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
+    //   },
+    // ],
   },
 
   pwa: {

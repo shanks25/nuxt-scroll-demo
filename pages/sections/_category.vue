@@ -62,33 +62,39 @@ export default {
     }
   },
 
-  paginationLinks() {
-    let nextPage = null
-    let previousPage = null
-
-    if (this.posts.links && this.posts.links.next) {
-      nextPage = this.posts.meta.current_page + 1
-      nextPage = `https://ddmemes.com/sections/anime?page=${nextPage}`
-    }
-
-    if (this.posts.links && this.posts.links.prev) {
-      previousPage = this.posts.meta.current_page - 1
-      previousPage = `https://ddmemes.com/sections/anime?page=${previousPage}`
-    }
-    const nextUrl = {
-      rel: 'next',
-      href: nextPage,
-    }
-    const previousUrl = {
-      rel: 'prev',
-      href: previousPage,
-    }
-
-    return [nextUrl, previousUrl].filter(({ href }) => !!href)
-  },
-
   mounted() {
-    console.log(this.posts)
+    console.log(this.$route.params.category)
+  },
+  computed: {
+    paginationLinks() {
+      let nextPage = null
+      let previousPage = null
+      if (this.posts.links && this.posts.links.next) {
+        nextPage = this.posts.meta.current_page + 1
+        nextPage = `https://ddmemes.com/sections/${this.$route.params.category}?page=${nextPage}`
+      }
+
+      if (this.posts.links && this.posts.links.prev) {
+        previousPage = this.posts.meta.current_page - 1
+        previousPage = `https://ddmemes.com/sections/${this.$route.params.category}?page=${previousPage}`
+      }
+
+      const nextUrl = {
+        rel: 'next',
+        href: nextPage,
+      }
+      const previousUrl = {
+        rel: 'prev',
+        href: previousPage,
+      }
+
+      const canonical = {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: `https://ddmemes.com/sections/${this.$route.params.category}`,
+      }
+      return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
+    },
   },
 
   methods: {
@@ -120,9 +126,12 @@ export default {
   head() {
     return {
       title: this.posts.keta,
+      link: this.paginationLinks,
       meta: [
         {
-          description: this.posts.desc,
+          hid: 'description',
+          name: 'description',
+          content: this.posts.desc,
         },
       ],
     }
@@ -151,7 +160,6 @@ export default {
 
   /*   async fetch() {
     let apiUrl = this.featuredTagsUrl(this.$route.params.category)
-    console.log(apiUrl)
     this.$axios
       .$get(apiUrl)
       .then((response) => {

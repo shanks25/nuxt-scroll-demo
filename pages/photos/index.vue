@@ -29,7 +29,16 @@ export default {
       title: 'All pages',
       meta: [
         {
-          description: 'All pages available on DDmemes',
+          hid: 'description',
+          name: 'description',
+          content: 'Explore all pages available on DDmemes',
+        },
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: 'https://ddmemes.com/photos',
         },
       ],
     }

@@ -65,7 +65,6 @@ export default {
       }
     },
   },
-  mounted() {},
 
   // async fetch() {
   //   this.categories = await this.$axios.$get(

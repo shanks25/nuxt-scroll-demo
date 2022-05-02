@@ -27,9 +27,6 @@ export default {
       tags: {},
     }
   },
-  mounted() {
-    // console.log(this.$route)
-  },
   computed: {
     paginationLinks() {
       let nextPage = null
@@ -52,8 +49,12 @@ export default {
         rel: 'prev',
         href: previousPage,
       }
-
-      return [nextUrl, previousUrl].filter(({ href }) => !!href)
+      const canonical = {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: `https://ddmemes.com/tags`,
+      }
+      return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
     },
   },
   methods: {
@@ -73,7 +74,9 @@ export default {
       link: this.paginationLinks,
       meta: [
         {
-          description: 'Explore All tags available on DDmemes',
+          hid: 'description',
+          name: 'description',
+          content: 'Explore All tags available on DDmemes',
         },
       ],
     }
