@@ -102,7 +102,7 @@ export default {
       // let tags = tagData.data.data.map((v) => `/tag/${v.slug}`)
 
       let categoryData = await axios.get(
-        'http://localhost:8000/api/sitemap-each-post'
+        'https://dev.celestialmemes.com/api/sitemap-each-post'
       )
       let categories = categoryData.data.data.map((v) => `/posts/${v.slug}`)
       return categories
