@@ -44,7 +44,7 @@
           <picture>
             <img
               :src="post.image"
-              :alt="post.ocr"
+              :alt="post.meta_desc"
               :class="{ fullHeight: $route.name == 'posts-slug' }"
             />
           </picture>
@@ -117,7 +117,7 @@ export default {
       sharing: {
         url: process.env.NUXT_SERVER_BASE_URL + '/posts/' + this.post.slug,
         title: this.post.title,
-        description: this.post.ocr,
+        description: this.post.meta_desc,
       },
       networks: [
         {

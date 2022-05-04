@@ -3,7 +3,7 @@
     <Back />
     <SocialHead
       :title="post.data.title"
-      :description="post.data.ocr"
+      :description="post.data.meta_desc"
       :image="post.data.image"
     />
     <Posts :post="post.data" />
@@ -21,12 +21,12 @@ export default {
 
   head() {
     return {
-      title: this.post.data.ocr ? this.post.data.ocr : this.post.data.title,
+      title: this.post.data.page_title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.post.data.ocr,
+          content: this.post.data.meta_desc,
         },
       ],
       link: [
@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    // this.loaded = true
+    console.log(this.post.data.meta_desc)
   },
   async asyncData({ params, $axios, error }) {
     try {

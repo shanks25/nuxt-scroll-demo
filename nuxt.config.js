@@ -18,7 +18,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favio.ico' },
-      { hid: 'canonical', rel: 'canonical', href: 'https://ddmemes.com' },
+      { hid: 'canonical', rel: 'canonical', href: 'https://ddmemes.com/' },
       {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css',
