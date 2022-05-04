@@ -116,8 +116,6 @@ export default {
       activeShare: false,
       sharing: {
         url: process.env.NUXT_SERVER_BASE_URL + '/posts/' + this.post.slug,
-        title: this.post.title,
-        description: this.post.meta_desc,
       },
       networks: [
         {

@@ -2,9 +2,6 @@ const axios = require('axios')
 require('dotenv').config()
 
 export default {
-  generate: {
-    fallback: '404.html',
-  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
@@ -31,7 +28,6 @@ export default {
 
     // script: [
     //   {
-    //     src: '/main.js',
     //     src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
     //   },
     // ],
@@ -63,6 +59,7 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/dotenv',
     'vue-social-sharing/nuxt',
+
     // 'bootstrap-vue/nuxt',
   ],
 
@@ -96,19 +93,20 @@ export default {
     },
   },
 
-  /*   sitemap: {
+  sitemap: {
     routes: async () => {
-      let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')
-      let pages = data.data.map((v) => `/photos/${v.id}`)
+      // let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')
+      // let pages = data.data.map((v) => `/photos/${v.id}`)
 
-      let tagData = await axios.get('http://localhost:8000/api/sitemap-tags')
-      let tags = tagData.data.data.map((v) => `/tags/${v.slug}`)
+      // let tagData = await axios.get('http://localhost:8000/api/sitemap-tags')
+      // let tags = tagData.data.data.map((v) => `/tag/${v.slug}`)
 
       let categoryData = await axios.get(
-        'http://localhost:8000/api/sitemap-categories'
+        'http://localhost:8000/api/sitemap-each-post'
       )
-      let categorys = categoryData.data.data.map((v) => `/sections/${v.slug}`)
-      return pages.concat(categorys, tags)
+      let categories = categoryData.data.data.map((v) => `/posts/${v.slug}`)
+      return categories
+      return tags.concat(categories, pages)
     },
-  }, */
+  },
 }

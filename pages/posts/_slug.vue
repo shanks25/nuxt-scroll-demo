@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.post.data.meta_desc)
+    // this.loaded = true
   },
   async asyncData({ params, $axios, error }) {
     try {
