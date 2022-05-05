@@ -4,51 +4,18 @@
       <div class="profile-image">
         <picture>
           <img
-            :src="
-              posts.category_image ||
-              'https://miscmedia-9gag-fun.9cache.com/images/thumbnail-facebook/1557376304.186_U5U7u5_100x100wp.webp'
-            "
-            :alt="posts.category_name"
+            src="https://i.picsum.photos/id/372/200/200.jpg?hmac=QFGGlcWGNWBK0oDD1jghIaCvGIFU5iJJcd2VhF5oH6o"
           />
         </picture>
       </div>
       <Back />
 
       <div class="profile-right">
-        <h2>{{ posts.category_name }}</h2>
-        <p>
-          {{ posts.category_description }}
-        </p>
+        <h2>Category name</h2>
       </div>
     </div>
-    <div class="tag-container">
-      <ul class="tag-list">
-        <FeaturedTags v-for="tag in tags" :key="tag.id" :tag="tag" />
-      </ul>
-    </div>
-
-    <pagination
-      class="list-page-pagination"
-      :data="posts"
-      @pagination-change-page="getResults"
-      :limit="6"
-    ></pagination>
-    <Loader v-if="loader" />
-    <template v-else>
-      <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
-      <SocialHead
-        :title="posts.keta"
-        :description="posts.category_name"
-        :image="posts.data[0].image"
-      />
-    </template>
-    <pagination
-      v-if="!loader"
-      :data="posts"
-      @pagination-change-page="getResults"
-      :limit="6"
-      class="list-page-pagination"
-    ></pagination>
+    <div class="tag-container"></div>
+    <Posts v-for="(post, index) in posts" :key="index" :post="post" />
   </div>
 </template>
 
@@ -57,116 +24,25 @@ export default {
   data() {
     return {
       posts: {},
-      tags: [],
-      loader: false,
     }
   },
 
-  computed: {
-    paginationLinks() {
-      let nextPage = null
-      let previousPage = null
-      if (this.posts.links && this.posts.links.next) {
-        nextPage = this.posts.meta.current_page + 1
-        nextPage = `https://ddmemes.com/sections/${this.$route.params.category}?page=${nextPage}`
-      }
-
-      if (this.posts.links && this.posts.links.prev) {
-        previousPage = this.posts.meta.current_page - 1
-        previousPage = `https://ddmemes.com/sections/${this.$route.params.category}?page=${previousPage}`
-      }
-
-      const nextUrl = {
-        rel: 'next',
-        href: nextPage,
-      }
-      const previousUrl = {
-        rel: 'prev',
-        href: previousPage,
-      }
-
-      const canonical = {
-        hid: 'canonical',
-        rel: 'canonical',
-        href: `https://ddmemes.com/sections/${this.$route.params.category}`,
-      }
-      let current_page = this.$route.query.page
-      if (current_page) {
-        canonical.href = `https://ddmemes.com/sections/${this.$route.params.category}?page=${current_page}`
-      }
-      return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
-    },
-  },
-
-  methods: {
-    getResults(page = 1) {
-      if (this.$route.query.page != page) {
-        this.$router.push({
-          query: {
-            page: page,
-          },
-        })
-      }
-    },
-
-    loadPosts(page) {
-      this.loader = true
-      this.$axios
-        .$get(`category/${this.$route.params.category}?page=${page}`)
-        .then((response) => {
-          this.posts = response
-          this.loader = false
-        })
-    },
-  },
-  watch: {
-    $route(to, from) {
-      this.loadPosts(to.query.page)
-    },
-  },
-  head() {
-    return {
-      title: this.posts.keta,
-      link: this.paginationLinks,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.posts.desc,
-        },
-      ],
-    }
-  },
-  async asyncData({ params, $axios, error, query }) {
+  async asyncData({ params, $axios, error }) {
     try {
-      if (!query.page) {
-        query.page = 1
-      }
-      const [posts, tags] = await Promise.all([
-        $axios.get(`category/${params.category}?page=${query.page}`),
-        $axios.get(
-          process.env.NUXT_BASE_URL +
-            `/json/featuredTags/${params.category}.json`
-        ),
-      ])
-
-      return {
-        posts: posts.data,
-        tags: tags.data.data,
-      }
+      const posts = await $axios.$get(`https://api.nuxtjs.dev/posts`)
+      return { posts }
     } catch (e) {
       error({ statusCode: 404, message: 'Post not found' })
     }
   },
 
-  /*   async fetch() {
-    let apiUrl = this.featuredTagsUrl(this.$route.params.category)
-    this.$axios
-      .$get(apiUrl)
-      .then((response) => {
-        this.tags = response.data
-      })
-      .catch(() => {})
-  }, */
+  // async fetch() {
+  //   this.$axios
+  //     .$get('https://api.nuxtjs.dev/posts')
+  //     .then((response) => {
+  //       this.posts = response
+  //     })
+  //     .catch(() => {})
+  // },
 }
 </script>

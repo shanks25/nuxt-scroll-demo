@@ -15,7 +15,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favio.ico' },
-      { hid: 'canonical', rel: 'canonical', href: 'https://ddmemes.com/' },
       {
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css',
@@ -55,34 +54,15 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/dotenv',
-    'vue-social-sharing/nuxt',
 
     // 'bootstrap-vue/nuxt',
   ],
 
-  plugins: ['@/plugins/vueLaravelPagination', '@/plugins/helpers'],
+  // plugins: ['@/plugins/vueLaravelPagination', '@/plugins/helpers'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.LOCAL_BASE_URL || 'http://localhost:8000/api',
-    progress: true,
-  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'en',
-    },
-  },
-
-  loading: {
-    color: '#25aac0',
-    height: '2px',
-  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -92,40 +72,4 @@ export default {
       },
     },
   },
-
-  sitemap: [
-    {
-      hostname: 'https://ddmemes.com',
-
-      routes: async () => {
-        let { data } = await axios.get(
-          'https://dev.celestialmemes.com/api/sitemap-pages'
-        )
-        let pages = data.data.map((v) => `/photos/${v.id}`)
-
-        let tagData = await axios.get(
-          'https://dev.celestialmemes.com/api/sitemap-tags'
-        )
-        let tags = tagData.data.data.map((v) => `/tag/${v.slug}`)
-
-        let categoryData = await axios.get(
-          'https://dev.celestialmemes.com/api/sitemap-categories'
-        )
-        let categorys = categoryData.data.data.map((v) => `/sections/${v.slug}`)
-
-        return tags.concat(categorys, pages)
-      },
-    },
-    {
-      hostname: 'https://ddmemes.com',
-      path: '/postsitemap.xml',
-      routes: async () => {
-        let postData = await axios.get(
-          'https://dev.celestialmemes.com/api/sitemap-each-post'
-        )
-        let posts = postData.data.data.map((v) => `/posts/${v.slug}`)
-        return posts
-      },
-    },
-  ],
 }

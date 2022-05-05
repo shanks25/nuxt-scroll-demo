@@ -19,23 +19,5 @@
 </template>
 
 <script>
-export default {
-  head: {
-    title: 'The Greatest Memes of All Time',
-    titleTemplate: '%s | DD memes', // it will be everywhere %s will be replaced by the page title
-
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'Explore DDmemes for the most popular memes, anime posts, weebs memes, relationship memes, and awesome memes on the internet!',
-      },
-      // { hid: 'keywords', name: 'keywords', content: 'itachi bitch' },
-      { 'http-equiv': 'http-equiv', content: 'text/html; charset=UTF-8' },
-    ],
-  },
-}
+export default {}
 </script>

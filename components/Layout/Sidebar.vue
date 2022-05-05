@@ -2,41 +2,6 @@
   <div id="cm-drawer" class="cm-sidebar hide-scrollbar">
     <div class="cm-drawer-container">
       <section class="dr-list">
-        <!-- <h4>Pages</h4> -->
-        <ul>
-          <li :class="{ 'active-lt': $route.name == 'index' }">
-            <span class="dLeft">
-              <nuxt-link
-                @click.native="checkMobileView()"
-                :to="{ name: 'index' }"
-                ><i class="bi bi-house-door-fill"></i>Hot</nuxt-link
-              >
-            </span>
-          </li>
-
-          <li :class="{ 'active-lt': $route.name == 'tags' }">
-            <span class="dLeft">
-              <nuxt-link
-                @click.native="checkMobileView()"
-                :to="{ name: 'tags' }"
-                ><i class="bi bi-stopwatch"></i> Tags</nuxt-link
-              >
-            </span>
-          </li>
-          <li :class="{ 'active-lt': $route.name == 'photos' }">
-            <span class="dLeft">
-              <nuxt-link
-                @click.native="checkMobileView()"
-                :to="{ name: 'photos' }"
-                ><i class="bi bi-lightning-charge-fill"></i> All
-                pages</nuxt-link
-              >
-            </span>
-          </li>
-        </ul>
-      </section>
-
-      <section class="dr-list">
         <h4>Section</h4>
         <ul>
           <Section
@@ -73,7 +38,9 @@ export default {
   //   )
   // },
   async fetch() {
-    this.categories = await this.$axios.$get(this.categoryUrl())
+    this.categories = await this.$axios.$get(
+      'https://dev.celestialmemes.com/api/categories'
+    )
   },
 }
 </script>

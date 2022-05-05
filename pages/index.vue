@@ -1,131 +1,26 @@
 <template>
   <div>
-    <landingFeatured />
-
-    <pagination
-      class="list-page-pagination"
-      :data="posts"
-      @pagination-change-page="getResults"
-      :limit="6"
-    ></pagination>
-    <Loader v-if="loader" />
-    <div v-else>
-      <SocialHead
-        title="The most famous internet memes of all time"
-        description="The sorted meme library"
-        :image="featuredImage"
-      />
-      <Posts v-for="(post, index) in posts.data" :key="index" :post="post" />
+    <div>
+      <Posts v-for="(post, index) in posts" :key="index" :post="post" />
     </div>
-
-    <pagination
-      class="list-page-pagination"
-      v-if="!loader"
-      :data="posts"
-      @pagination-change-page="getResults"
-      :limit="6"
-    ></pagination>
   </div>
 </template>
-<script src="" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
 <script>
 export default {
   data() {
     return {
       posts: {},
-      loader: false,
     }
   },
 
-  methods: {
-    getResults(page = 1, broswerBack = false) {
-      if (this.$route.query.page != page) {
-        this.$router.push({
-          query: {
-            page: page,
-          },
-        })
-      }
-    },
-
-    loadPosts(page) {
-      this.loader = true
-      this.$axios
-        .$get(this.postUrl(page))
-        .then((response) => {
-          this.posts = response
-          this.loader = false
-        })
-        .then(() => {})
-    },
-  },
+  methods: {},
   async fetch() {
     let page = this.$route.query.page
     if (!page) {
       page = 1
     }
-    this.posts = await this.$axios.$get(this.postUrl(page))
+    this.posts = await this.$axios.$get('https://api.nuxtjs.dev/posts')
   },
-
-  watch: {
-    $route(to, from) {
-      this.loadPosts(to.query.page)
-    },
-  },
-
-  computed: {
-    featuredImage() {
-      return process.env.FEATURED_IMAGE
-    },
-    nextPage() {
-      return this.$route.query.page + 1
-    },
-    paginationLinks() {
-      let nextPage = null
-      let previousPage = null
-
-      if (this.posts.links && this.posts.links.next) {
-        nextPage = this.posts.meta.current_page + 1
-        nextPage = `https://ddmemes.com?page=${nextPage}`
-      }
-
-      if (this.posts.links && this.posts.links.prev) {
-        previousPage = this.posts.meta.current_page - 1
-        previousPage = `https://ddmemes.com?page=${previousPage}`
-      }
-      const nextUrl = {
-        rel: 'next',
-        href: nextPage,
-      }
-      const previousUrl = {
-        rel: 'prev',
-        href: previousPage,
-      }
-
-      return [nextUrl, previousUrl].filter(({ href }) => !!href)
-    },
-  },
-
-  head() {
-    return {
-      link: this.paginationLinks,
-    }
-  },
-  /*   async fetch() {
-    let page = this.$route.query.page
-    if (!page) {
-      page = 1
-    }
-    this.posts = await this.$axios.$get(
-      `http://localhost:3000/ksr/posts${page}.json`
-    )
-  }, */
-
-  /* this code is in getResult method
-        this.$axios
-        .$get(`http://localhost:3000/ksr/posts${page}.json`)
-        .then((response) => {
-          this.posts = response
-        }) */
 }
 </script>
