@@ -28,7 +28,8 @@
               <nuxt-link
                 @click.native="checkMobileView()"
                 :to="{ name: 'photos' }"
-                ><i class="bi bi-lightning-charge-fill"></i> Photos</nuxt-link
+                ><i class="bi bi-lightning-charge-fill"></i> All
+                pages</nuxt-link
               >
             </span>
           </li>

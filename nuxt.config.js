@@ -108,16 +108,15 @@ export default {
       let tags = tagData.data.data.map((v) => `/tag/${v.slug}`)
 
       let categoryData = await axios.get(
-        'https://dev.celestialmemes.com/api/sitemap-each-post'
+        'https://dev.celestialmemes.com/api/sitemap-categories'
       )
       let categorys = categoryData.data.data.map((v) => `/sections/${v.slug}`)
 
-      // let postData = await axios.get(
-      //   'https://dev.celestialmemes.com/api/sitemap-each-post'
-      // )
-      // let posts = postData.data.data.map((v) => `/posts/${v.slug}`)
-      // return posts
-      return tags.concat(categorys, pages)
+      let postData = await axios.get(
+        'https://dev.celestialmemes.com/api/sitemap-each-post'
+      )
+      let posts = postData.data.data.map((v) => `/posts/${v.slug}`)
+      return tags.concat(categorys, pages, posts)
     },
   },
 }
