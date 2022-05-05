@@ -62,9 +62,6 @@ export default {
     }
   },
 
-  mounted() {
-    console.log(this.$route.params.category)
-  },
   computed: {
     paginationLinks() {
       let nextPage = null
@@ -92,6 +89,10 @@ export default {
         hid: 'canonical',
         rel: 'canonical',
         href: `https://ddmemes.com/sections/${this.$route.params.category}`,
+      }
+      let current_page = this.$route.query.page
+      if (current_page) {
+        canonical.href = `https://ddmemes.com/sections/${this.$route.params.category}?page=${current_page}`
       }
       return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
     },

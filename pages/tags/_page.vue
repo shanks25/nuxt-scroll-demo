@@ -59,6 +59,7 @@ export default {
         previousPage = this.tags.meta.current_page - 1
         previousPage = `https://ddmemes.com/tags?page=${previousPage}`
       }
+
       const nextUrl = {
         rel: 'next',
         href: nextPage,
@@ -68,7 +69,12 @@ export default {
         href: previousPage,
       }
 
-      return [nextUrl, previousUrl].filter(({ href }) => !!href)
+      const canonical = {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: `https://ddmemes.com/tags/${this.$route.params.page}`,
+      }
+      return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
     },
   },
   methods: {

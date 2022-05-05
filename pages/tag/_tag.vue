@@ -80,6 +80,10 @@ export default {
         rel: 'canonical',
         href: `https://ddmemes.com/tag/${this.$route.params.tag}`,
       }
+      let current_page = this.$route.query.page
+      if (current_page) {
+        canonical.href = `https://ddmemes.com/tag/${this.$route.params.tag}?page=${current_page}`
+      }
       return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
     },
   },

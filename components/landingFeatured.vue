@@ -85,6 +85,18 @@
           The big sad
         </NuxtLink>
       </li>
+
+      <li>
+        <NuxtLink
+          class="c-tag"
+          :to="{
+            name: 'sections-category',
+            params: { category: 'wisdom-crazy-thoughts' },
+          }"
+        >
+          Wisdom & Thoughts
+        </NuxtLink>
+      </li>
     </ul>
   </div>
 </template>

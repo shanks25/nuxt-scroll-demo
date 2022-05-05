@@ -44,7 +44,7 @@ export default {
   },
   async fetch() {
     let page = this.$route.params.page
-    this.posts = await this.$axios.$get(this.postUrl(page))
+    this.posts = await this.$axios.$get(`posts?page=${page}`)
   },
   computed: {
     paginationLinks() {
@@ -69,7 +69,13 @@ export default {
         href: previousPage,
       }
 
-      return [nextUrl, previousUrl].filter(({ href }) => !!href)
+      const canonical = {
+        hid: 'canonical',
+        rel: 'canonical',
+        href: `https://ddmemes.com/photos/${this.$route.params.page}`,
+      }
+
+      return [canonical, nextUrl, previousUrl].filter(({ href }) => !!href)
     },
   },
   head() {
