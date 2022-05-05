@@ -97,23 +97,27 @@ export default {
     hostname: 'https://ddmemes.com',
 
     routes: async () => {
-      let { data } = await axios.get('http://localhost:8000/api/sitemap-pages')
+      let { data } = await axios.get(
+        'https://dev.celestialmemes.com/api/sitemap-pages'
+      )
       let pages = data.data.map((v) => `/photos/${v.id}`)
 
-      let tagData = await axios.get('http://localhost:8000/api/sitemap-tags')
+      let tagData = await axios.get(
+        'https://dev.celestialmemes.com/api/sitemap-tags'
+      )
       let tags = tagData.data.data.map((v) => `/tag/${v.slug}`)
 
       let categoryData = await axios.get(
-        'http://localhost:8000/api/sitemap-each-post'
+        'https://dev.celestialmemes.com/api/sitemap-each-post'
       )
       let categorys = categoryData.data.data.map((v) => `/sections/${v.slug}`)
 
-      let postData = await axios.get(
-        'https://dev.celestialmemes.com/api/sitemap-each-post'
-      )
-      let posts = postData.data.data.map((v) => `/posts/${v.slug}`)
-
-      return tags.concat(categorys, posts, pages)
+      // let postData = await axios.get(
+      //   'https://dev.celestialmemes.com/api/sitemap-each-post'
+      // )
+      // let posts = postData.data.data.map((v) => `/posts/${v.slug}`)
+      // return posts
+      return tags.concat(categorys, pages)
     },
   },
 }
