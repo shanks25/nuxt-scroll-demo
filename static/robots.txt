@@ -1,5 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://ddmemes.com/sitemap.xml
-Sitemap: https://ddmemes.com/postsitemap.xml 

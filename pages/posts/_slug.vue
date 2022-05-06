@@ -25,7 +25,7 @@ export default {
 
   async fetch() {
     this.$axios
-      .$get('https://api.nuxtjs.dev/posts1')
+      .$get('https://api.nuxtjs.dev/posts/1')
       .then((response) => {
         this.post = response
       })

@@ -1,4 +1,5 @@
 export default function (to, from, savedPosition) {
+  console.log(savedPosition)
   if (savedPosition) {
     return savedPosition
   }

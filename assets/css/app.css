@@ -381,7 +381,7 @@ article header .post-section .thumb-icon picture img{border-radius: 3px;}
 
 
 .fullHeight{
-    max-height: 1000px !important; 
+    max-height: 100% !important; 
 }
 .dropbtn { background-color: transparent; color: #777; padding: 4px 18px; font-size: 16px; border: 1px solid #ced4da; cursor: pointer; border-radius: 4px; margin-left: 5px }
 .dropbtn:hover, .dropbtn:focus { background-color: rgba(0,0,0,.06); }
